@@ -1,7 +1,9 @@
-﻿class Program
+﻿using System;
+
+class Program
 {
 
-    public static void Main(String[]args)
+    public static void Main(string[]args)
     {
         // See https://aka.ms/new-console-template for more information
         Console.WriteLine("Hello, World!");
