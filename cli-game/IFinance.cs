@@ -1,0 +1,4 @@
+interface IFinance
+{
+    void newDay();
+}
