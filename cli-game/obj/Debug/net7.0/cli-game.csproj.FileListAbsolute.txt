@@ -1,0 +1,15 @@
+/workspaces/LifeGameBeat94/cli-game/bin/Debug/net7.0/cli-game
+/workspaces/LifeGameBeat94/cli-game/bin/Debug/net7.0/cli-game.deps.json
+/workspaces/LifeGameBeat94/cli-game/bin/Debug/net7.0/cli-game.runtimeconfig.json
+/workspaces/LifeGameBeat94/cli-game/bin/Debug/net7.0/cli-game.dll
+/workspaces/LifeGameBeat94/cli-game/bin/Debug/net7.0/cli-game.pdb
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.csproj.AssemblyReference.cache
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.AssemblyInfoInputs.cache
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.AssemblyInfo.cs
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.csproj.CoreCompileInputs.cache
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.dll
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/refint/cli-game.dll
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.pdb
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.genruntimeconfig.cache
+/workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/ref/cli-game.dll
