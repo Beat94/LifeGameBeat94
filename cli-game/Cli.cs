@@ -18,9 +18,10 @@ public class Cli
 			Console.WriteLine("Main menu:");
 			Console.WriteLine("New game /t n");
 			Console.WriteLine("Load game /t l");
+			Console.WriteLine("Save game /t s");
 			Console.WriteLine("Quit /t q");
 			menuSelect = getStringCli("Menu").ToLower();
-			if(menuSelect.Equals("n") || menuSelect.Equals("l") || menuSelect.Equals("q"))
+			if(menuSelect.Equals("n") || menuSelect.Equals("l") || menuSelect.Equals("q") || menuSelect.Equals("s"))
 			{
 				rightChoice = true;
 			}
@@ -31,6 +32,22 @@ public class Cli
 
 	public void run()
 	{
-		string? menuSelect = menu();
+		string? menuSelect = null;
+		while(!menuSelect.Equals("q"))
+		{
+			menuSelect = menu();
+			if(menuSelect.Equals("n"))
+			{
+				// implement new person-workflow
+			}
+			else if(menuSelect.Equals("s"))
+			{
+				// implement save-workflow
+			}
+			else if(menuSelect.Equals("l"))
+			{
+				// implement load-workflow
+			}
+		}
 	}
 }
