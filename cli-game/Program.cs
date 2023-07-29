@@ -9,5 +9,7 @@ class Program
         Console.WriteLine("Hello, World!");
         Cli cli = new Cli();
         cli.run();
+
+        
     }
 }
