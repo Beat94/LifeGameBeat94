@@ -40,6 +40,8 @@ public class Cli
 			{
 				// implement new person-workflow
 				Console.WriteLine("New Game");
+				string name = getStringCli("Name");
+				Person person = new Person(name);
 			}
 			else if(menuSelect.Equals("s"))
 			{
