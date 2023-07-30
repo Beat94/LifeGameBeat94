@@ -18,4 +18,12 @@ public class Person : IFinance
         dayCount += 1;
         sleepyness = 100;
     }
+
+    public string getDayMonthYear()
+    {
+        int day = 0;
+        int month = 0;
+        int year = (dayCount / 360) - ((dayCount % 360)/100);
+        return day.ToString() + "." + month.ToString() + "." + year.ToString();
+    }
 }
