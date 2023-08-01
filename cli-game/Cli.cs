@@ -10,16 +10,23 @@ public class Cli
 
 	public string? menu()
 	{
+		List<(string, string)> menuDict = new List<(string,string)>();
 		bool rightChoice = false;
 		string? menuSelect = null;
+		Toolbox tb = new Toolbox();
+		
+		menuDict.Add(("New game", "n"));
+		menuDict.Add(("Load game", "l"));
+		menuDict.Add(("Save game", "s"));
+		menuDict.Add(("Quit", "q"));
+
 		while(rightChoice == false)
 		{
 			Console.WriteLine("Welcome to lifegame of Beat94");
 			Console.WriteLine("Main menu:");
-			Console.WriteLine("New game \t n");
-			Console.WriteLine("Load game \t l");
-			Console.WriteLine("Save game \t s");
-			Console.WriteLine("Quit \t\t q");
+			tb.cliTable(menuDict, 2);
+			// Hier noch das Menü einbauen		
+
 			menuSelect = getStringCli("Menu").ToLower();
 			if(menuSelect.Equals("n") || menuSelect.Equals("l") || menuSelect.Equals("q") || menuSelect.Equals("s"))
 			{
