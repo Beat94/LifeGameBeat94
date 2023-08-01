@@ -12,10 +12,13 @@ public class Toolbox
         return size;
     }
     
-    public void cliTable(List<(string s1, string s2)> dict)
+    public void cliTable(List<(string s1, string s2)> dict, int distance)
     {
         int strSize1 = 0;
         int strSize2 = 0;
+        int strMaxSize = 0;
+        string strOut1 = "";
+        string strOut2 = "";
         
         foreach((string string1,string string2) in dict)
         {
@@ -23,9 +26,38 @@ public class Toolbox
             strSize2 = sizeComparer(strSize2, string2);
         }
 
-        // hier noch den String bauen
+        strSize1 += distance;
+        strSize2 += distance;
+        if(strSize1 < strSize2)
+        {
+            strMaxSize = strSize2;
+        }
+        else
+        {
+            strMaxSize = strSize1;
+        }
 
-        Console.WriteLine($"Max Grösse Spalte 1 {strSize1}");
-        Console.WriteLine($"Max Grösse Spalte 2 {strSize2}");
+        // hier noch den String bauen
+        foreach((string string1,string string2) in dict)
+        {
+            strOut1 = string1;
+            strOut2 = string2;
+
+            // Leerzeichen einfügen
+            for(int i = 0; i < strMaxSize; i++)
+            {
+                if(i < (strSize1 - string1.Length))
+                {
+                    strOut1 += " ";
+                }
+
+                if(i < (strSize2 - string2.Length))
+                {
+                    strOut2 += " ";
+                }
+            }
+
+            Console.WriteLine(strOut1 + strOut2);
+        }
     }
 }

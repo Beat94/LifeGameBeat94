@@ -24,7 +24,7 @@ public class Cli
 		{
 			Console.WriteLine("Welcome to lifegame of Beat94");
 			Console.WriteLine("Main menu:");
-			tb.cliTable(menuDict);
+			tb.cliTable(menuDict, 2);
 			// Hier noch das Menü einbauen		
 
 			menuSelect = getStringCli("Menu").ToLower();
