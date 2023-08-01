@@ -8,7 +8,7 @@ public class Cli
 		return Console.ReadLine();
 	}
 
-	public string? menu()
+	public string? menuMain()
 	{
 		List<(string, string)> menuDict = new List<(string,string)>();
 		bool rightChoice = false;
@@ -37,12 +37,24 @@ public class Cli
 		return menuSelect;
 	}
 
+	public void menuDay()
+	{
+		string? menuSelect2 = null;
+
+		while(!menuSelect2.ToLower().Equals("q"))
+		{
+			// implement menu
+
+			// Create a check algorithm based on additional menu-data
+		}
+	}
+
 	public void run()
 	{
 		string menuSelect = "";
 		while(!menuSelect.Equals("q"))
 		{
-			menuSelect = menu();
+			menuSelect = menuMain();
 			if(menuSelect.Equals("n"))
 			{
 				// implement new person-workflow
