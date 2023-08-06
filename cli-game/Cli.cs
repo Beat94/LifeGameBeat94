@@ -8,17 +8,43 @@ public class Cli
 		return Console.ReadLine();
 	}
 
-	public string? menuMain()
+	public string menuMulti(List<(string menuName, string menuCommand)> menuList, string name, string nameShort)
 	{
-		List<(string, string)> menuDict = new List<(string,string)>();
 		bool rightChoice = false;
 		string? menuSelect = null;
 		Toolbox tb = new Toolbox();
-		
-		menuDict.Add(("New game", "n"));
-		menuDict.Add(("Load game", "l"));
-		menuDict.Add(("Save game", "s"));
-		menuDict.Add(("Quit", "q"));
+
+		while(rightChoice == false)
+		{
+			Console.WriteLine(name);
+			tb.cliTable(menuList, 2);
+			menuSelect = getStringCli(nameShort).ToLower();
+
+			foreach((string menu, string command) in menuList)
+			{
+				if(menuSelect.Equals(menu,StringComparison.CurrentCultureIgnoreCase))
+				{
+					Console.WriteLine(menu);
+					rightChoice = true;
+				}
+			}
+		}
+
+		return menuSelect;
+	}
+/*
+	public string? menuMain()
+	{
+		List<(string, string)> menuDict = new List<(string,string)>
+		{
+			("New game", "n"),
+			("Load game", "l"),
+			("Save game", "s"),
+			("Quit", "q")
+		};
+		bool rightChoice = false;
+		string? menuSelect = null;
+		Toolbox tb = new Toolbox();
 
 		while(rightChoice == false)
 		{
@@ -36,21 +62,67 @@ public class Cli
 
 		return menuSelect;
 	}
+*/
 
-	public void menuDay()
+	public string? menuMain()
+	{
+		List<(string, string)> menuDict = new List<(string,string)>
+		{
+			("New game", "n"),
+			("Load game", "l"),
+			("Save game", "s"),
+			("Quit", "q")
+		};
+		
+		Console.WriteLine("Welcome to lifegame of Beat94");
+		string? menuSelect = menuMulti(menuDict, "Main Menu", "Menu");
+
+		Console.WriteLine(menuSelect);
+
+		return menuSelect;
+	}
+
+	public void menuDay(Person person)
 	{
 		string? menuSelect2 = null;
 
-		while(!menuSelect2.ToLower().Equals("q"))
+		while(!menuSelect2.Equals("q", StringComparison.CurrentCultureIgnoreCase))
 		{
-			// implement menu
+            List<(string, string)> menuDayDict = new List<(string, string)>
+            {
+                // implement menu
+                ("Next Day", "n"),
+                ("Go to Bank", "b"),
+                ("Go to standard Jobs", "j"),
+				("Go to Main Menu", "q")
+            };
 
-			// Create a check algorithm based on additional menu-data
-		}
+			bool rightChoice = false;
+			Toolbox tb = new Toolbox();
+
+            // Create a check algorithm based on additional menu-data
+			while(rightChoice == false)
+			{
+				Console.WriteLine($"Day Menu Day {person.dayCount}");
+				tb.cliTable(menuDayDict, 2);
+
+				menuSelect2 = getStringCli("Day Menu").ToLower();
+				if(menuSelect2.Equals("n") || menuSelect2.Equals("b") || menuSelect2.Equals("j") || menuSelect2.Equals("q"))
+				{
+					rightChoice = true;
+				}
+			}
+
+			if(menuSelect2.Equals("n"))
+			{
+
+			}
+        }
 	}
 
 	public void run()
 	{
+		Person person;
 		string menuSelect = "";
 		while(!menuSelect.Equals("q"))
 		{
@@ -60,7 +132,7 @@ public class Cli
 				// implement new person-workflow
 				Console.WriteLine("New Game");
 				string name = getStringCli("Name");
-				Person person = new Person(name);
+				person = new Person(name);
 			}
 			else if(menuSelect.Equals("s"))
 			{
