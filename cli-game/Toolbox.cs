@@ -60,4 +60,34 @@ public class Toolbox
             Console.WriteLine(strOut1 + strOut2);
         }
     }
+
+    public string? getStringCli(string message)
+	{
+		Console.Write(message + ": ");
+		return Console.ReadLine();
+	}
+
+
+    public string menuMulti(List<(string menuName, string menuCommand)> menuList, string name, string nameShort)
+	{
+		bool rightChoice = false;
+		string? menuSelect = null;
+
+		while(rightChoice == false)
+		{
+			Console.WriteLine(name);
+			cliTable(menuList, 2);
+			menuSelect = getStringCli(nameShort).ToLower();
+
+			for(int i = 0; i < menuList.Count; i++)
+			{
+				if(menuSelect.Equals(menuList[i].menuCommand, StringComparison.CurrentCultureIgnoreCase))
+				{
+					rightChoice = true;
+				}
+			}
+		}
+
+		return menuSelect;
+	}
 }
