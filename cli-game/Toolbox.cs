@@ -17,8 +17,8 @@ public class Toolbox
         int strSize1 = 0;
         int strSize2 = 0;
         int strMaxSize = 0;
-        string strOut1 = "";
-        string strOut2 = "";
+        string strOut1 = string.Empty;
+        string strOut2 = string.Empty;
         
         foreach((string string1,string string2) in dict)
         {
@@ -60,4 +60,34 @@ public class Toolbox
             Console.WriteLine(strOut1 + strOut2);
         }
     }
+
+    public string? getStringCli(string message)
+	{
+		Console.Write(message + ": ");
+		return Console.ReadLine();
+	}
+
+
+    public string menuMulti(List<(string menuName, string menuCommand)> menuList, string name, string nameShort)
+	{
+		bool rightChoice = false;
+		string? menuSelect = null;
+
+		while(rightChoice == false)
+		{
+			Console.WriteLine(name);
+			cliTable(menuList, 2);
+			menuSelect = getStringCli(nameShort).ToLower();
+
+			for(int i = 0; i < menuList.Count; i++)
+			{
+				if(menuSelect.Equals(menuList[i].menuCommand, StringComparison.CurrentCultureIgnoreCase))
+				{
+					rightChoice = true;
+				}
+			}
+		}
+
+		return menuSelect;
+	}
 }
