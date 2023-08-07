@@ -17,8 +17,8 @@ public class Toolbox
         int strSize1 = 0;
         int strSize2 = 0;
         int strMaxSize = 0;
-        string strOut1 = "";
-        string strOut2 = "";
+        string strOut1 = string.Empty;
+        string strOut2 = string.Empty;
         
         foreach((string string1,string string2) in dict)
         {

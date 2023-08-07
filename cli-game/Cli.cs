@@ -45,8 +45,6 @@ public class Cli
 		Console.WriteLine("Welcome to Life-Game");
 		string? menuSelect = menuMulti(menuDict, "Main Menu", "Menu");
 
-		Console.WriteLine(menuSelect);
-
 		return menuSelect;
 	}
 
