@@ -20,11 +20,10 @@ public class Cli
 			tb.cliTable(menuList, 2);
 			menuSelect = getStringCli(nameShort).ToLower();
 
-			foreach((string menu, string command) in menuList)
+			for(int i = 0; i < menuList.Count; i++)
 			{
-				if(menuSelect.Equals(menu,StringComparison.CurrentCultureIgnoreCase))
+				if(menuSelect.Equals(menuList[i].menuCommand, StringComparison.CurrentCultureIgnoreCase))
 				{
-					Console.WriteLine(menu);
 					rightChoice = true;
 				}
 			}
@@ -32,37 +31,6 @@ public class Cli
 
 		return menuSelect;
 	}
-/*
-	public string? menuMain()
-	{
-		List<(string, string)> menuDict = new List<(string,string)>
-		{
-			("New game", "n"),
-			("Load game", "l"),
-			("Save game", "s"),
-			("Quit", "q")
-		};
-		bool rightChoice = false;
-		string? menuSelect = null;
-		Toolbox tb = new Toolbox();
-
-		while(rightChoice == false)
-		{
-			Console.WriteLine("Welcome to lifegame of Beat94");
-			Console.WriteLine("Main menu:");
-			tb.cliTable(menuDict, 2);
-			// Hier noch das Menü einbauen		
-
-			menuSelect = getStringCli("Menu").ToLower();
-			if(menuSelect.Equals("n") || menuSelect.Equals("l") || menuSelect.Equals("q") || menuSelect.Equals("s"))
-			{
-				rightChoice = true;
-			}
-		}
-
-		return menuSelect;
-	}
-*/
 
 	public string? menuMain()
 	{
@@ -74,7 +42,7 @@ public class Cli
 			("Quit", "q")
 		};
 		
-		Console.WriteLine("Welcome to lifegame of Beat94");
+		Console.WriteLine("Welcome to Life-Game");
 		string? menuSelect = menuMulti(menuDict, "Main Menu", "Menu");
 
 		Console.WriteLine(menuSelect);
