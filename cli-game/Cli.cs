@@ -35,26 +35,22 @@ public class Cli
 
 		while(!menuSelect2.Equals("q", StringComparison.CurrentCultureIgnoreCase))
 		{
+			Console.WriteLine($"Day Menu Day {person.dayCount}");
 
-			
-			bool rightChoice = false;
+			menuSelect2 = tb.menuMulti(menuDayDict, "Day menu", "Day");
 
-            // Create a check algorithm based on additional menu-data
-			while(rightChoice == false)
+			if(menuSelect2.Equals("n", StringComparison.CurrentCultureIgnoreCase))
 			{
-				Console.WriteLine($"Day Menu Day {person.dayCount}");
-				tb.cliTable(menuDayDict, 2);
-
-				menuSelect2 = tb.getStringCli("Day Menu").ToLower();
-				if(menuSelect2.Equals("n") || menuSelect2.Equals("b") || menuSelect2.Equals("j") || menuSelect2.Equals("q"))
-				{
-					rightChoice = true;
-				}
+				Console.WriteLine("Next Day");
+				person.newDay();
 			}
-
-			if(menuSelect2.Equals("n"))
+			else if(menuSelect2.Equals("b", StringComparison.CurrentCultureIgnoreCase))
 			{
-
+				Console.WriteLine("Bank");
+			}
+			else if(menuSelect2.Equals("j", StringComparison.CurrentCultureIgnoreCase))
+			{
+				Console.WriteLine("standard Job");
 			}
         }
 	}
@@ -72,6 +68,7 @@ public class Cli
 				Console.WriteLine("New Game");
 				string name = tb.getStringCli("Name");
 				person = new Person(name);
+				menuDay(person);
 			}
 			else if(menuSelect.Equals("s"))
 			{
