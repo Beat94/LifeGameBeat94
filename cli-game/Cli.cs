@@ -22,7 +22,7 @@ public class Cli
 
 	public void menuDay(Person person)
 	{
-		string? menuSelect2 = null;
+		string? menuSelect2 = string.Empty;
 
 		List<(string, string)> menuDayDict = new List<(string, string)>
 		{
@@ -35,8 +35,7 @@ public class Cli
 
 		while(!menuSelect2.Equals("q", StringComparison.CurrentCultureIgnoreCase))
 		{
-			Console.WriteLine($"Day Menu Day {person.dayCount}");
-
+			Console.WriteLine($"Day Menu Day {person.DayCount}");
 			menuSelect2 = tb.menuMulti(menuDayDict, "Day menu", "Day");
 
 			if(menuSelect2.Equals("n", StringComparison.CurrentCultureIgnoreCase))
