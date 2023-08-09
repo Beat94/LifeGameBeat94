@@ -1,6 +1,8 @@
 public class Money
 {
     private decimal amount;
+
+    // value x1000
     public Money(decimal amount)
     {
         this.amount = amount;
