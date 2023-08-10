@@ -54,6 +54,43 @@ public class Cli
         }
 	}
 
+	public Person menuJob(Person Person)
+	{
+		string? menuSelectJob = string.Empty;
+		StandardJobsManager sjm = new StandardJobsManager();
+
+		List<(string, string)> menuJobDict = new List<(string, string)>
+		{
+			("get job", "g"),
+			("leave jJob", "l"),
+			("work","w"),
+			("go back to day menu","q")
+		};
+		List<(string,string)> jobList = sjm.GetJobList();
+
+
+		while(!menuSelectJob.Equals("q",StringComparison.CurrentCultureIgnoreCase))
+		{
+			Console.WriteLine($"Job Menu - current Job: {sjm.GetJobHired()}");
+			menuSelectJob = tb.menuMulti(menuJobDict, "Job Menu", "Job");
+
+			if(menuSelectJob.Equals("g", StringComparison.CurrentCultureIgnoreCase))
+			{
+
+			}
+			else if(menuSelectJob.Equals("l", StringComparison.CurrentCultureIgnoreCase))
+			{
+				
+			}
+			else if(menuSelectJob.Equals("w", StringComparison.CurrentCultureIgnoreCase))
+			{
+				
+			}
+		}
+		
+		return Person;
+	}
+
 	public void run()
 	{
 		Person person;

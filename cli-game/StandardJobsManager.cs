@@ -1,6 +1,6 @@
 public class StandardJobsManager
 {
-    private bool JobSet;
+    public bool JobSet{get;set;}
 
     public StandardJobsManager()
     {
@@ -69,7 +69,7 @@ public class StandardJobsManager
             salaryOut = jobsList[GetHiredIndex()].Salary;
 
             sleepyness = sleepyness / percentage * 100;
-            salaryOut.giveMoney(salaryOut.getValueDeciaml() / (100 - percentage)*100);
+            salaryOut.giveMoney(salaryOut.getValueDecimal() / (100 - percentage)*100);
         }
         else
         {
@@ -78,5 +78,19 @@ public class StandardJobsManager
         }
         
         return (salaryOut,sleepyness);
+    }
+
+    public string getJobToString(int index) => jobsList[index].Name;
+
+    public string GetJobHired()
+    {
+        string job = "unemployed";
+
+        if(JobSet)
+        {
+            job = getJobToString(GetHiredIndex());
+        }
+
+        return job;
     }
 }

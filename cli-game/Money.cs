@@ -10,7 +10,7 @@ public class Money
 
     public float getValueFloat() => (float) Math.Round((amount / 1000),2);
 
-    public decimal getValueDeciaml() => amount;
+    public decimal getValueDecimal() => amount;
 
     public void addValue(decimal value)
     {

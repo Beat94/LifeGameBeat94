@@ -26,4 +26,9 @@ public class Person : IFinance
         int year = (DayCount / 360) - ((DayCount % 360)/100);
         return day.ToString() + "." + month.ToString() + "." + year.ToString();
     }
+
+    public void addMoney(Money Income)
+    {
+        money.addValue(Income.getValueDecimal());
+    }
 }
