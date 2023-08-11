@@ -14,7 +14,7 @@ public class Money
 
     public void addValue(decimal value)
     {
-        amount += value;
+        amount = value + amount;
     }
 
     public Money giveMoney(decimal value)

@@ -31,4 +31,17 @@ public class Person : IFinance
     {
         money.addValue(Income.getValueDecimal());
     }
+
+    public List<(string,string)> getPersonStats()
+    {
+        List<(string, string)> personStats = new List<(string, string)>
+        {
+            ("Name", this.name),
+            ("Sleepyness", this.sleepyness.ToString()),
+            ("Day", DayCount.ToString()),
+            ("Money", money.getValueFloat().ToString())
+        };
+
+        return personStats;
+    }
 }

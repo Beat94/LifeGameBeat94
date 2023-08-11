@@ -3,7 +3,8 @@ using System;
 public class Cli
 {
 	Toolbox tb = new Toolbox();
-	
+	StandardJobsManager sjm = new StandardJobsManager();
+
 	public string? menuMain()
 	{
 		List<(string, string)> menuDict = new List<(string,string)>
@@ -33,8 +34,11 @@ public class Cli
 			("Go to Main Menu", "q")
 		};
 
+
 		while(!menuSelect2.Equals("q", StringComparison.CurrentCultureIgnoreCase))
 		{
+			Console.WriteLine("Person stats:");
+			tb.cliTable(person.getPersonStats(), 2);
 			Console.WriteLine($"Day Menu Day {person.DayCount}");
 			menuSelect2 = tb.menuMulti(menuDayDict, "Day menu", "Day");
 
@@ -49,7 +53,8 @@ public class Cli
 			}
 			else if(menuSelect2.Equals("j", StringComparison.CurrentCultureIgnoreCase))
 			{
-				Console.WriteLine("standard Job");
+				// Console.WriteLine("standard Job");
+				person = menuJob(person);
 			}
         }
 	}
@@ -57,7 +62,6 @@ public class Cli
 	public Person menuJob(Person Person)
 	{
 		string? menuSelectJob = string.Empty;
-		StandardJobsManager sjm = new StandardJobsManager();
 
 		List<(string, string)> menuJobDict = new List<(string, string)>
 		{
@@ -76,15 +80,18 @@ public class Cli
 
 			if(menuSelectJob.Equals("g", StringComparison.CurrentCultureIgnoreCase))
 			{
-
+				sjm.GetJob(Int32.Parse(tb.menuMulti(sjm.GetJobList(),"Get job - joblist:","select Job")));
 			}
 			else if(menuSelectJob.Equals("l", StringComparison.CurrentCultureIgnoreCase))
 			{
-				
+				sjm.LeaveJob();
 			}
 			else if(menuSelectJob.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
-				
+				// add workpercentage question
+				(Money salary, int sleepy) = sjm.Work(100);
+				Person.addMoney(salary);
+				Person.sleepyness = Person.sleepyness - sleepy;
 			}
 		}
 		

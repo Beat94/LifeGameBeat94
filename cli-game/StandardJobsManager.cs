@@ -54,6 +54,7 @@ public class StandardJobsManager
         if(JobSet == true)
         {
             jobsList[GetHiredIndex()].Hired = false;
+            JobSet = false;
         }
     }
 
@@ -61,15 +62,15 @@ public class StandardJobsManager
     public (Money, int) Work(int percentage)
     {
         int sleepyness;
+        Money salary;
         Money salaryOut;
 
         if(JobSet)
         {
-            sleepyness = 100;
-            salaryOut = jobsList[GetHiredIndex()].Salary;
+            salary = jobsList[GetHiredIndex()].Salary;
 
-            sleepyness = sleepyness / percentage * 100;
-            salaryOut.giveMoney(salaryOut.getValueDecimal() / (100 - percentage)*100);
+            sleepyness = percentage;
+            salaryOut = new Money(salary.getValueDecimal() / 30 / 100 * percentage);
         }
         else
         {
