@@ -75,7 +75,7 @@ public class Toolbox
 
 		while(rightChoice == false)
 		{
-			Console.WriteLine(name);
+			Console.WriteLine("\n" + name);
 			cliTable(menuList, 2);
 			menuSelect = getStringCli(nameShort).ToLower();
 
