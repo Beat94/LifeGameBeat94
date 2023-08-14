@@ -4,6 +4,8 @@ public class Cli
 {
 	Toolbox tb = new Toolbox();
 	StandardJobsManager sjm = new StandardJobsManager();
+	Person person = new Person("");
+	Bank bank = new Bank("Public Bank", 1,1,1,1);
 
 	public string? menuMain()
 	{
@@ -21,7 +23,19 @@ public class Cli
 		return menuSelect;
 	}
 
-	public void menuDay(Person person)
+	public void menuBank()
+	{
+		string? menuSelectBank = string.Empty;
+
+		List<(string, string)> menuBankDict = new List<(string, string)>
+		{
+			("",""),
+			("Get credit", "c"),
+			("Go to Day Menu", "q")
+		};
+	}
+
+	public void menuDay()
 	{
 		string? menuSelect2 = string.Empty;
 
@@ -54,12 +68,12 @@ public class Cli
 			else if(menuSelect2.Equals("j", StringComparison.CurrentCultureIgnoreCase))
 			{
 				// Console.WriteLine("standard Job");
-				person = menuJob(person);
+				menuJob();
 			}
         }
 	}
 
-	public Person menuJob(Person Person)
+	public void menuJob()
 	{
 		string? menuSelectJob = string.Empty;
 
@@ -73,29 +87,27 @@ public class Cli
 		List<(string,string)> jobList = sjm.GetJobList();
 
 
-		while(!menuSelectJob.Equals("q",StringComparison.CurrentCultureIgnoreCase))
+		while (!menuSelectJob.Equals("q", StringComparison.CurrentCultureIgnoreCase))
 		{
 			Console.WriteLine($"Job Menu - current Job: {sjm.GetJobHired()}");
 			menuSelectJob = tb.menuMulti(menuJobDict, "Job Menu", "Job");
 
-			if(menuSelectJob.Equals("g", StringComparison.CurrentCultureIgnoreCase))
+			if (menuSelectJob.Equals("g", StringComparison.CurrentCultureIgnoreCase))
 			{
-				sjm.GetJob(Int32.Parse(tb.menuMulti(sjm.GetJobList(),"Get job - joblist:","select Job")));
+				sjm.GetJob(Int32.Parse(tb.menuMulti(sjm.GetJobList(), "Get job - joblist:", "select Job")));
 			}
-			else if(menuSelectJob.Equals("l", StringComparison.CurrentCultureIgnoreCase))
+			else if (menuSelectJob.Equals("l", StringComparison.CurrentCultureIgnoreCase))
 			{
 				sjm.LeaveJob();
 			}
-			else if(menuSelectJob.Equals("w", StringComparison.CurrentCultureIgnoreCase))
+			else if (menuSelectJob.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
 				// add workpercentage question
 				(Money salary, int sleepy) = sjm.Work(100);
-				Person.addMoney(salary);
-				Person.sleepyness = Person.sleepyness - sleepy;
+				person.addMoney(salary);
+				person.sleepyness = person.sleepyness - sleepy;
 			}
 		}
-		
-		return Person;
 	}
 
 	public void run()
@@ -111,7 +123,7 @@ public class Cli
 				Console.WriteLine("New Game");
 				string name = tb.getStringCli("Name");
 				person = new Person(name);
-				menuDay(person);
+				menuDay();
 			}
 			else if(menuSelect.Equals("s"))
 			{

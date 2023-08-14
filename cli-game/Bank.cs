@@ -23,11 +23,21 @@ public class Bank : IFinance
 
     public decimal getMaxCreditValue(decimal savingValue) => savingValue * 30;
 
-    public decimal getMaxMortgageValue(decimal income, decimal savings)
+    public (decimal, bool) getMaxMortgageValue(float income, float valueMoney)
     {
-        return 0;
+        bool outputbool = false;
+        float maxMortgage = valueMoney / 0.8f;
+        if (maxMortgage / (float)negativeInterestMortgage * 100 < income)
+        {
+            outputbool = true;
+        }
+
+        decimal maxMortgageDecimal = (decimal)(maxMortgage * 1000);
+        return (maxMortgageDecimal, outputbool);
     }
         
+
+
     public void newDay()
     {
         throw new NotImplementedException();
