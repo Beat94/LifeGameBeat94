@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gq+pSTxA2YlNARM3j6Rc7bNId8uUU1U0WAgUXTBMCNDGp7oWzheozolaW7FvUC0nMitMvLo3z2c+z0o1uQUnjw==",
+  "dgSpecHash": "OquqHbx5Ndyei9S70qzFHSm6oKo+Bklju3jANfpq5NRsOovE6XSgtAIbWQshTa3w5gpzuCuywE4cxTID2uRo4g==",
   "success": true,
-  "projectFilePath": "/workspaces/LifeGameBeat94/cli-game/cli-game.csproj",
+  "projectFilePath": "D:\\eigene-projekte\\C-Sharp\\LifeGameBeat94\\cli-game\\cli-game.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

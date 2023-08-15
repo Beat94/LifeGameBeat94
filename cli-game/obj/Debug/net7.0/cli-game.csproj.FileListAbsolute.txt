@@ -13,3 +13,17 @@
 /workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.pdb
 /workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/cli-game.genruntimeconfig.cache
 /workspaces/LifeGameBeat94/cli-game/obj/Debug/net7.0/ref/cli-game.dll
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\bin\Debug\net7.0\cli-game.exe
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\bin\Debug\net7.0\cli-game.deps.json
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\bin\Debug\net7.0\cli-game.runtimeconfig.json
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\bin\Debug\net7.0\cli-game.dll
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\bin\Debug\net7.0\cli-game.pdb
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\cli-game.GeneratedMSBuildEditorConfig.editorconfig
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\cli-game.AssemblyInfoInputs.cache
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\cli-game.AssemblyInfo.cs
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\cli-game.csproj.CoreCompileInputs.cache
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\cli-game.dll
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\refint\cli-game.dll
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\cli-game.pdb
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\cli-game.genruntimeconfig.cache
+D:\eigene-projekte\C-Sharp\LifeGameBeat94\cli-game\obj\Debug\net7.0\ref\cli-game.dll
