@@ -27,6 +27,7 @@ public class Bank : IFinance
     {
         bool outputbool = false;
         float maxMortgage = valueMoney / 0.8f;
+        
         if (maxMortgage / (float)negativeInterestMortgage * 100 < income)
         {
             outputbool = true;
