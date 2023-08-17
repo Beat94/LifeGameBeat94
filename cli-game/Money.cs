@@ -1,6 +1,6 @@
 public class Money
 {
-    private decimal amount;
+    private decimal amount {get;set;}
 
     // value x1000
     public Money(decimal amount)
@@ -8,9 +8,7 @@ public class Money
         this.amount = amount;
     }
 
-    public float getValueFloat() => (float) Math.Round((amount / 1000),2);
-
-    public decimal getValueDecimal() => amount;
+    public float getValueFloat() => (float) Math.Round((amount / 1000),3);
 
     public void addValue(decimal value)
     {

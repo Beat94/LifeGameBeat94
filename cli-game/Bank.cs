@@ -1,6 +1,6 @@
 public class Bank : IFinance
 {
-    public string nameBank {get;}
+    public string NameBank {get;set;}
     public decimal positiveInterestBelow200k;
     public decimal positiveInterestOver200k;
     public decimal negativeInterestCredit;
@@ -14,7 +14,7 @@ public class Bank : IFinance
         decimal negativeInterestCredit,
         decimal negativeInterestMortgage)
     {
-        this.nameBank = nameBank;
+        this.NameBank = nameBank;
         this.positiveInterestBelow200k = positiveInterestBelow200k;
         this.positiveInterestOver200k = positiveInterestOver200k;
         this.negativeInterestCredit = negativeInterestCredit;
@@ -36,10 +36,36 @@ public class Bank : IFinance
         return (maxMortgageDecimal, outputbool);
     }
         
+    public void addBankAccount(BankAccount bankAccount)
+    {
+        BankAccountList.Add(bankAccount);
+    }
 
+    public List<(string, string)> getBankAccountListMenu()
+    {
+        List<(string, string)> outputList = new List<(string,string)>();
+        
+        for(int i = 0; i < BankAccountList.Count; i++)
+        {
+            outputList.Add((BankAccountList[i].accountName, i.ToString()));
+        }
+
+        return outputList;
+    }
+
+    public void delBankAccount(int index)
+    {
+        BankAccountList.RemoveAt(index);
+    }
 
     public void newDay()
     {
         throw new NotImplementedException();
+
+        for(int i = 0; i < BankAccountList.Count; i++)
+        {
+            BankAccountList[i].newDay();
+        }
+
     }
 }

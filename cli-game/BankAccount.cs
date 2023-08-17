@@ -5,8 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class BankAccount
+public class BankAccount : IFinance
 {
-    public long percentage { get; set; }
+    public string accountName {get; set;}
+    public float percentage { get; set; }
     public Money amount { get; set; }
+
+    public void newDay()
+    {
+        amount.addValue((decimal)(amount.getValueFloat() * percentage)*1000);
+    }
 }
