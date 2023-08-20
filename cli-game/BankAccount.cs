@@ -11,6 +11,13 @@ public class BankAccount : IFinance
     public float percentage { get; set; }
     public Money amount { get; set; }
 
+    public BankAccount(string accountName, float percentage, Money? amount)
+    {
+        this.accountName = accountName;
+        this.percentage = percentage;
+        this.amount = amount;
+    }
+
     public void newDay()
     {
         amount.addValue((decimal)(amount.getValueFloat() * percentage)*1000);

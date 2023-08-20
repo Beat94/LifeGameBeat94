@@ -37,9 +37,37 @@ public class Bank : IFinance
         return (maxMortgageDecimal, outputbool);
     }
         
-    public void addBankAccount(BankAccount bankAccount)
+    public void addBankAccount(string accountName, Money? money, BankAccountType bankAccountType)
     {
-        BankAccountList.Add(bankAccount);
+        float percentage = 0;
+
+        if(money.getValueFloat() == 0)
+        {
+            money = new Money(0);
+        }
+
+        // Logic to add specific percentage
+        if(bankAccountType == BankAccountType.account)
+        {
+            if(money.getValueFloat() > 200000)
+            {
+                percentage =  (float)(positiveInterestOver200k / 100);
+            }
+            else
+            {
+                percentage =  (float)(positiveInterestBelow200k / 100);
+            }
+        }
+        else if(bankAccountType == BankAccountType.credit)
+        {
+            percentage = (float)(negativeInterestCredit / 100);
+        }
+        else if(bankAccountType == BankAccountType.mortage)
+        {
+            percentage = (float)(negativeInterestMortgage / 100);
+        }
+
+        BankAccountList.Add(new BankAccount(accountName, percentage, money));
     }
 
     public List<(string, string)> getBankAccountListMenu()
@@ -61,12 +89,12 @@ public class Bank : IFinance
 
     public void newDay()
     {
-        throw new NotImplementedException();
-
         for(int i = 0; i < BankAccountList.Count; i++)
         {
+            // Add checking of percentage and amount of value
+
+            
             BankAccountList[i].newDay();
         }
-
     }
 }

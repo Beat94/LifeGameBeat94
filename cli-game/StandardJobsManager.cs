@@ -70,7 +70,7 @@ public class StandardJobsManager
             salary = jobsList[GetHiredIndex()].Salary;
 
             sleepyness = percentage;
-            salaryOut = new Money(salary.getValueDecimal() / 30 / 100 * percentage);
+            salaryOut = new Money((decimal)((salary.getValueFloat() / 30 / 100 * percentage)*1000));
         }
         else
         {
