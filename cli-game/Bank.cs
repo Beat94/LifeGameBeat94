@@ -82,9 +82,16 @@ public class Bank : IFinance
         return outputList;
     }
 
-    public void delBankAccount(int index)
+    public Money delBankAccount(int index)
     {
+        Money money = new Money(0);
+        if (BankAccountList[index].amount.getValueFloat() > 0)
+        {
+            money = BankAccountList[index].amount
+        }
+
         BankAccountList.RemoveAt(index);
+        return money;
     }
 
     public void newDay()
