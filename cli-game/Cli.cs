@@ -29,8 +29,10 @@ public class Cli
 
 		List<(string, string)> menuBankDict = new List<(string, string)>
 		{
-			("",""),
-			("Get credit", "c"),
+			("Show Financial state","s"),
+			("Account Menu","a"),
+			("Mortgage Menu","m"),
+			("Credit Menu", "c"),
 			("Go to Day Menu", "q")
 		};
 	}
