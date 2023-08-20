@@ -99,7 +99,18 @@ public class Bank : IFinance
         for(int i = 0; i < BankAccountList.Count; i++)
         {
             // Add checking of percentage and amount of value
+            if(BankAccountList[i].amount.getValueFloat() > 0)
+            {
+                if(BankAccountList[i].amount.getValueFloat() < 200000 && BankAccountList[i].percentage == (float)(positiveInterestBelow200k/100))
+                {
+                    BankAccountList[i].percentage = (float)(positiveInterestOver200k/100);
+                }
 
+                if(BankAccountList[i].amount.getValueFloat() > 200000 && BankAccountList[i].percentage == (float)(positiveInterestOver200k/100))
+                {
+                    BankAccountList[i].percentage = (float)(positiveInterestBelow200k/100);
+                }
+            }
             
             BankAccountList[i].newDay();
         }
