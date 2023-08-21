@@ -35,6 +35,44 @@ public class Cli
 			("Credit Menu", "c"),
 			("Go to Day Menu", "q")
 		};
+
+		while(!menuSelectBank.Equals("q", StringComparison.CurrentCultureIgnoreCase))
+		{
+			menuSelectBank = tb.menuMulti(menuBankDict, "Menu Bank", "Bank");
+
+			if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
+			{
+				Console.WriteLine("Financial State");
+			}
+			else if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
+			{
+				Console.WriteLine("Account Menu");
+			}
+			else if(menuSelectBank.Equals("m",StringComparison.CurrentCultureIgnoreCase))
+			{
+				Console.WriteLine("Mortgage Menu");
+			}
+			else if(menuSelectBank.Equals("c",StringComparison.CurrentCultureIgnoreCase))
+			{
+				Console.WriteLine("Credit Menu");
+			}
+		}
+	}
+
+	public void menuBankAccount()
+	{
+		string? menuSelectBankAccount = string.Empty;
+
+	}
+
+	public void menuBankMortgage()
+	{
+
+	}
+
+	public void menuBankCredit()
+	{
+
 	}
 
 	public void menuDay()
