@@ -43,18 +43,22 @@ public class Cli
 			if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
 			{
 				Console.WriteLine("Financial State");
+
 			}
 			else if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
 			{
-				Console.WriteLine("Account Menu");
+				//Console.WriteLine("Account Menu");
+				menuBankAccount();
 			}
 			else if(menuSelectBank.Equals("m",StringComparison.CurrentCultureIgnoreCase))
 			{
-				Console.WriteLine("Mortgage Menu");
+				//Console.WriteLine("Mortgage Menu");
+				menuBankMortgage();
 			}
 			else if(menuSelectBank.Equals("c",StringComparison.CurrentCultureIgnoreCase))
 			{
-				Console.WriteLine("Credit Menu");
+				//Console.WriteLine("Credit Menu");
+				menuBankCredit();
 			}
 		}
 	}
@@ -63,16 +67,31 @@ public class Cli
 	{
 		string? menuSelectBankAccount = string.Empty;
 
+		List<(string, string)> menuBankAccount = new List<(string, string)>
+		{
+			("a","a")
+		};
+
 	}
 
 	public void menuBankMortgage()
 	{
+		string? menuSelectBankMortgage = string.Empty;
 
+		List<(string, string)> menuBankMortgage = new List<(string, string)>
+		{
+			("a","a")
+		};
 	}
 
 	public void menuBankCredit()
 	{
+		string? menuSelectBankCredit = string.Empty;
 
+		List<(string, string)> menuBankCredit = new List<(string, string)>
+		{
+			("a","a")
+		};
 	}
 
 	public void menuDay()
@@ -84,7 +103,7 @@ public class Cli
 			// implement menu
 			("Next Day", "n"),
 			("Go to Bank", "b"),
-			("Go to standard Jobs", "j"),
+			("Go to Standard Jobs", "j"),
 			("Go to Main Menu", "q")
 		};
 
@@ -153,7 +172,7 @@ public class Cli
 	public void run()
 	{
 		Person person;
-		string menuSelect = "";
+		string? menuSelect = "";
 		while(!menuSelect.Equals("q"))
 		{
 			menuSelect = menuMain();
