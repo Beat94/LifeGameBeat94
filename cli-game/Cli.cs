@@ -43,7 +43,7 @@ public class Cli
 			if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
 			{
 				Console.WriteLine("Financial State");
-
+				// List of Financial state
 			}
 			else if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
 			{
@@ -80,7 +80,10 @@ public class Cli
 
 		List<(string, string)> menuBankMortgage = new List<(string, string)>
 		{
-			("a","a")
+			("Show Mortgage Account","s"),
+			("Create Bank Account","c"),
+			("Choose Bank Account","w"),
+			("Back to Bank Menu","q")
 		};
 	}
 
