@@ -7,6 +7,7 @@ public class Bank : IFinance
     public decimal negativeInterestMortgage;
     public List<BankAccount> BankAccountList = new List<BankAccount>();
 
+
     public Bank (
         string nameBank,
         decimal positiveInterestBelow200k,
@@ -67,7 +68,7 @@ public class Bank : IFinance
             percentage = (float)(negativeInterestMortgage / 100);
         }
 
-        BankAccountList.Add(new BankAccount(accountName, percentage, money));
+        BankAccountList.Add(new BankAccount(accountName, percentage, money, bankAccountType));
     }
 
     public List<(string, string)> getBankAccountListMenu()
@@ -77,6 +78,36 @@ public class Bank : IFinance
         for(int i = 0; i < BankAccountList.Count; i++)
         {
             outputList.Add((BankAccountList[i].accountName, i.ToString()));
+        }
+
+        return outputList;
+    }
+
+    public List<(string,string)>? getBankAccountListMenuByType(BankAccountType bankAccountType)
+    {
+        List<(string,string)> outputList = new List<(string, string)>();
+
+        for(int i = 0; i < BankAccountList.Count; i++)
+        {
+            if(BankAccountList[i].bankAccountType == bankAccountType)
+            {
+                outputList.Add((BankAccountList[i].accountName, i.ToString()));
+            }
+        }
+
+        return outputList;
+    }
+
+    public List<(string,string)>? getBankAccountSaldoListByType(BankAccountType bankAccountType)
+    {
+        List<(string,string)> outputList = new List<(string, string)>();
+
+        for(int i = 0; i < BankAccountList.Count; i++)
+        {
+            if(BankAccountList[i].bankAccountType == bankAccountType)
+            {
+                outputList.Add((BankAccountList[i].accountName, BankAccountList[i].amount.getValueFloat().ToString()));
+            }
         }
 
         return outputList;

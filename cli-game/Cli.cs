@@ -44,6 +44,7 @@ public class Cli
 			{
 				Console.WriteLine("Financial State");
 				// List of Financial state
+
 			}
 			else if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
 			{
@@ -69,7 +70,7 @@ public class Cli
 
 		List<(string, string)> menuBankAccount = new List<(string, string)>
 		{
-			("a","a")
+			("Back to Bank Menu","q")
 		};
 
 	}
@@ -78,13 +79,39 @@ public class Cli
 	{
 		string? menuSelectBankMortgage = string.Empty;
 
-		List<(string, string)> menuBankMortgage = new List<(string, string)>
+		// Choose Bankaccount is to choose mortgage and pay this 
+		List<(string, string)> menuBankMortgageDict = new List<(string, string)>
 		{
 			("Show Mortgage Account","s"),
 			("Create Bank Account","c"),
 			("Choose Bank Account","w"),
 			("Back to Bank Menu","q")
 		};
+
+		while(!menuSelectBankMortgage.Equals("q", StringComparison.CurrentCultureIgnoreCase))
+		{
+			menuSelectBankMortgage = tb.menuMulti(menuBankMortgageDict, "Menu Bank Mortgage", "Bank");
+
+			if(menuSelectBankMortgage.Equals("s", StringComparison.CurrentCultureIgnoreCase))
+			{
+				//bank.getBankAccountListMenuByType()
+				List<(string accountName, string accountSaldo)>? bankAccountList = bank.getBankAccountSaldoListByType(BankAccountType.mortage);
+
+				if(bankAccountList != null)
+				{
+					tb.cliTable(bankAccountList, 2);
+				}
+			}
+			else if(menuSelectBankMortgage.Equals("c", StringComparison.CurrentCultureIgnoreCase))
+			{
+
+			}
+			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
+			{
+
+			}
+		}
+
 	}
 
 	public void menuBankCredit()
@@ -93,7 +120,7 @@ public class Cli
 
 		List<(string, string)> menuBankCredit = new List<(string, string)>
 		{
-			("a","a")
+			("Back to Bank Menu","q")
 		};
 	}
 
