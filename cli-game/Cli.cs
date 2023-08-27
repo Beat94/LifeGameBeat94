@@ -42,11 +42,19 @@ public class Cli
 
 			if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
 			{
+				float valuePlayer = bank.getMoneySumFloatByType(null);
+				valuePlayer += person.money.getValueFloat();
+
 				Console.WriteLine("Financial State");
 				// List of Financial state
+				List<(string, string)> accountSaldoList = bank.getBankAccountSaldoListByType(null);
+				accountSaldoList.Add(("Total value", valuePlayer.ToString()));
+				tb.cliTable(accountSaldoList, 2);
+				
+				
 
 			}
-			else if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
+			else if(menuSelectBank.Equals("a",StringComparison.CurrentCultureIgnoreCase))
 			{
 				//Console.WriteLine("Account Menu");
 				menuBankAccount();
@@ -70,8 +78,109 @@ public class Cli
 
 		List<(string, string)> menuBankAccount = new List<(string, string)>
 		{
+			("Deposit Money","d"),
+			("Payout Money","p"),
 			("Back to Bank Menu","q")
 		};
+
+
+		while(!menuSelectBankAccount.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		{
+			if(menuSelectBankAccount.Equals("d", StringComparison.InvariantCultureIgnoreCase))
+			{
+				List<(string, string)> AccountList = bank.getBankAccountListMenuByType(BankAccountType.account);
+				int? bankAccountIndex = null;
+				float? moneyAmount = null;
+				bool inputTrue = false;
+
+				while(!inputTrue)
+				{
+					string? bankAccountChoose = tb.menuMulti(AccountList, "BankAccount Deposit", "Bank Account");
+					string? moneyAmountString = tb.getStringCli("Money Amount");
+
+					if(!String.IsNullOrEmpty(bankAccountChoose) && !String.IsNullOrEmpty(moneyAmountString))
+					{
+						try
+						{
+							bankAccountIndex = Int32.Parse(bankAccountChoose);
+						}
+						catch(Exception e)
+						{
+							Console.WriteLine($"please write a number BankAccountIndex now: {bankAccountChoose}");
+							Console.Write(e);
+							continue;
+						}
+
+						try
+						{
+							moneyAmount = float.Parse(moneyAmountString);
+						}
+						catch(Exception e)
+						{
+							Console.WriteLine($"please write an amount for BankAccount - now: {moneyAmountString}");
+							Console.Write(e);
+							continue;
+						}
+					}
+
+					if(bankAccountIndex != null && moneyAmount != null)
+					{
+						inputTrue = true;
+					}
+				}
+
+				// calling bankaccount and choosing value
+				int finalBankAccountIndex = (int)bankAccountIndex;
+				decimal money = (decimal)(moneyAmount*1000);
+				bank.BankAccountList[finalBankAccountIndex].amount.addValue(money);
+			}
+			else if(menuSelectBankAccount.Equals("p", StringComparison.InvariantCultureIgnoreCase))
+			{
+				List<(string, string)> AccountList = bank.getBankAccountListMenuByType(BankAccountType.account);
+				int? bankAccountIndex = null;
+				float? moneyAmount = null;
+				bool inputTrue = false;
+
+				while(!inputTrue)
+				{
+					string? bankAccountChoose = tb.menuMulti(AccountList, "BankAccount Deposit", "Bank Account");
+					string? moneyAmountString = tb.getStringCli("Money Amount");
+
+					if(!String.IsNullOrEmpty(bankAccountChoose) && !String.IsNullOrEmpty(moneyAmountString))
+					{
+						try
+						{
+							bankAccountIndex = Int32.Parse(bankAccountChoose);
+						}
+						catch(Exception e)
+						{
+							Console.WriteLine($"please write a number BankAccountIndex now: {bankAccountChoose}");
+							continue;
+						}
+
+						try
+						{
+							moneyAmount = float.Parse(moneyAmountString);
+						}
+						catch(Exception e)
+						{
+							Console.WriteLine($"please write an amount for BankAccount - now: {moneyAmountString}");
+							continue;
+						}
+					}
+
+					if(bankAccountIndex != null && moneyAmount != null)
+					{
+						inputTrue = true;
+					}
+				}
+
+				// calling bankaccount and choosing value
+				int finalBankAccountIndex = (int)bankAccountIndex;
+				decimal money = (decimal)(moneyAmount*1000);
+				person.addMoney(bank.BankAccountList[finalBankAccountIndex].amount.giveMoney(money));
+			}
+		}
 
 	}
 
@@ -104,7 +213,7 @@ public class Cli
 			}
 			else if(menuSelectBankMortgage.Equals("c", StringComparison.CurrentCultureIgnoreCase))
 			{
-
+				
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{

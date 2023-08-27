@@ -15,6 +15,11 @@ public class Money
         amount = value + amount;
     }
 
+    public decimal getValueDecimal()
+    {
+        return amount;
+    }
+
     public Money giveMoney(decimal value)
     {
         amount -= value;

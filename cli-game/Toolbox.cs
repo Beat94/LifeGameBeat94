@@ -61,6 +61,7 @@ public class Toolbox
         }
     }
 
+    // for input in cli
     public string? getStringCli(string message)
 	{
 		Console.Write(message + ": ");
@@ -90,4 +91,6 @@ public class Toolbox
 
 		return menuSelect;
 	}
+
+    
 }

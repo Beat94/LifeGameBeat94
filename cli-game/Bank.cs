@@ -38,7 +38,9 @@ public class Bank : IFinance
         return (maxMortgageDecimal, outputbool);
     }
         
-    public void addBankAccount(string accountName, Money? money, BankAccountType bankAccountType)
+    public void addBankAccount(string accountName, 
+    Money? money, 
+    BankAccountType bankAccountType)
     {
         float percentage = 0;
 
@@ -98,7 +100,7 @@ public class Bank : IFinance
         return outputList;
     }
 
-    public List<(string,string)>? getBankAccountSaldoListByType(BankAccountType bankAccountType)
+    public List<(string,string)>? getBankAccountSaldoListByType(BankAccountType? bankAccountType)
     {
         List<(string,string)> outputList = new List<(string, string)>();
 
@@ -108,9 +110,32 @@ public class Bank : IFinance
             {
                 outputList.Add((BankAccountList[i].accountName, BankAccountList[i].amount.getValueFloat().ToString()));
             }
+            else if(bankAccountType == null)
+            {
+                outputList.Add((BankAccountList[i].accountName, BankAccountList[i].amount.getValueFloat().ToString()));
+            }
         }
 
         return outputList;
+    }
+
+    public float getMoneySumFloatByType(BankAccountType? bankAccountType)
+    {
+        float output = 0;
+
+        for(int i = 0; i < BankAccountList.Count; i++)
+        {
+            if(BankAccountList[i].bankAccountType == bankAccountType)
+            {
+                output += BankAccountList[i].amount.getValueFloat();
+            }
+            else if(bankAccountType == null)
+            {
+                output += BankAccountList[i].amount.getValueFloat();
+            }
+        }
+
+        return output;
     }
 
     public Money delBankAccount(int index)
@@ -118,7 +143,7 @@ public class Bank : IFinance
         Money money = new Money(0);
         if (BankAccountList[index].amount.getValueFloat() > 0)
         {
-            money = BankAccountList[index].amount
+            money = BankAccountList[index].amount;
         }
 
         BankAccountList.RemoveAt(index);
