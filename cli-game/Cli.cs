@@ -50,9 +50,6 @@ public class Cli
 				List<(string, string)> accountSaldoList = bank.getBankAccountSaldoListByType(null);
 				accountSaldoList.Add(("Total value", valuePlayer.ToString()));
 				tb.cliTable(accountSaldoList, 2);
-				
-				
-
 			}
 			else if(menuSelectBank.Equals("a",StringComparison.CurrentCultureIgnoreCase))
 			{
@@ -213,7 +210,15 @@ public class Cli
 			}
 			else if(menuSelectBankMortgage.Equals("c", StringComparison.CurrentCultureIgnoreCase))
 			{
-				
+				string? accountName = null; 
+				while(accountName == null)
+				{
+					accountName = tb.getStringCli("Account Name:");
+				}
+
+				// Check and max amount 
+
+				bank.addBankAccount((string)accountName, , BankAccountType.mortage);
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
