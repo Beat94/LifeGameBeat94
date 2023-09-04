@@ -293,7 +293,8 @@ public class Cli
 			}
 			else if(menuSelect2.Equals("b", StringComparison.CurrentCultureIgnoreCase))
 			{
-				Console.WriteLine("Bank");
+				//Console.WriteLine("Bank");
+				menuBank();
 			}
 			else if(menuSelect2.Equals("j", StringComparison.CurrentCultureIgnoreCase))
 			{
