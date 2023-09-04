@@ -215,10 +215,21 @@ public class Cli
 				{
 					accountName = tb.getStringCli("Account Name:");
 				}
+				
+				(Money moneyWork, int sleepyness) = sjm.Work(100);
+				float income = moneyWork.getValueFloat();
 
 				// Check and max amount 
+				(decimal money, bool possible) = bank.getMaxMortgageValue(income, bank.getMoneySumFloatByType(null));
+				float choosenValue = -1;
+				bool rightValue = false;
+				while(rightValue == false)
+				{
+					
+				}
 
-				bank.addBankAccount((string)accountName, , BankAccountType.mortage);
+				decimal amount = 0;
+				bank.addBankAccount((string)accountName, new Money(amount), BankAccountType.mortage);
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
