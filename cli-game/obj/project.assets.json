@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/home/codespace/.nuget/packages/": {}
+    "C:\\Users\\Beat\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspaces/LifeGameBeat94/cli-game/cli-game.csproj",
+      "projectUniqueName": "e:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj",
       "projectName": "cli-game",
-      "projectPath": "/workspaces/LifeGameBeat94/cli-game/cli-game.csproj",
-      "packagesPath": "/home/codespace/.nuget/packages/",
-      "outputPath": "/workspaces/LifeGameBeat94/cli-game/obj/",
+      "projectPath": "e:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj",
+      "packagesPath": "C:\\Users\\Beat\\.nuget\\packages\\",
+      "outputPath": "e:\\programming\\LifeGameBeat94\\cli-game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/codespace/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Beat\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/dotnet/7.0.302/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
