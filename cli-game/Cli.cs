@@ -221,15 +221,31 @@ public class Cli
 
 				// Check and max amount 
 				(decimal money, bool possible) = bank.getMaxMortgageValue(income, bank.getMoneySumFloatByType(null));
+				float maxMoney = (float)(money/1000);
 				float choosenValue = -1;
 				bool rightValue = false;
+
 				while(rightValue == false)
 				{
-					
+					string valueString = tb.getStringCli($"Please choose your mortgage. Maximum possible mortgage: {maxMoney} > ");
+					try
+					{
+						choosenValue = float.Parse(valueString);
+					}
+					catch(Exception ex)
+					{
+						Console.Write(ex);
+						continue;
+					}
+
+					if(choosenValue > 0 && choosenValue <= maxMoney)
+					{
+						rightValue = true;
+					}
 				}
 
 				decimal amount = 0;
-				bank.addBankAccount((string)accountName, new Money(amount), BankAccountType.mortage);
+				bank.addBankAccount((string)accountName, new Money((decimal) choosenValue*1000), BankAccountType.mortage);
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
