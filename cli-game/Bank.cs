@@ -43,8 +43,7 @@ public class Bank : IFinance
     BankAccountType bankAccountType)
     {
         float percentage = 0;
-
-        if(money.getValueFloat() == 0)
+        if(money == null)
         {
             money = new Money(0);
         }
