@@ -1,3 +1,5 @@
+// should be used as job-experience in the future
+
 public class Experience
 {
     public string name{get;set;}

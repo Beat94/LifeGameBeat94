@@ -29,9 +29,223 @@ public class Cli
 
 		List<(string, string)> menuBankDict = new List<(string, string)>
 		{
-			("",""),
-			("Get credit", "c"),
+			("Show Financial state","s"),
+			("Account Menu","a"),
+			("Mortgage Menu","m"),
+			("Credit Menu", "c"),
 			("Go to Day Menu", "q")
+		};
+
+		while(!menuSelectBank.Equals("q", StringComparison.CurrentCultureIgnoreCase))
+		{
+			menuSelectBank = tb.menuMulti(menuBankDict, "Menu Bank", "Bank");
+
+			if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
+			{
+				float valuePlayer = bank.getMoneySumFloatByType(null);
+				valuePlayer += person.money.getValueFloat();
+
+				Console.WriteLine("Financial State");
+				// List of Financial state
+				List<(string, string)> accountSaldoList = bank.getBankAccountSaldoListByType(null);
+				accountSaldoList.Add(("Total value", valuePlayer.ToString()));
+				tb.cliTable(accountSaldoList, 2);
+			}
+			else if(menuSelectBank.Equals("a",StringComparison.CurrentCultureIgnoreCase))
+			{
+				//Console.WriteLine("Account Menu");
+				menuBankAccount();
+			}
+			else if(menuSelectBank.Equals("m",StringComparison.CurrentCultureIgnoreCase))
+			{
+				//Console.WriteLine("Mortgage Menu");
+				menuBankMortgage();
+			}
+			else if(menuSelectBank.Equals("c",StringComparison.CurrentCultureIgnoreCase))
+			{
+				//Console.WriteLine("Credit Menu");
+				menuBankCredit();
+			}
+		}
+	}
+
+	public void menuBankAccount()
+	{
+		string? menuSelectBankAccount = string.Empty;
+
+		List<(string, string)> menuBankAccount = new List<(string, string)>
+		{
+			("Deposit Money","d"),
+			("Payout Money","p"),
+			("Back to Bank Menu","q")
+		};
+
+
+		while(!menuSelectBankAccount.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		{
+			if(menuSelectBankAccount.Equals("d", StringComparison.InvariantCultureIgnoreCase))
+			{
+				List<(string, string)> AccountList = bank.getBankAccountListMenuByType(BankAccountType.account);
+				int? bankAccountIndex = null;
+				float? moneyAmount = null;
+				bool inputTrue = false;
+
+				while(!inputTrue)
+				{
+					string? bankAccountChoose = tb.menuMulti(AccountList, "BankAccount Deposit", "Bank Account");
+					string? moneyAmountString = tb.getStringCli("Money Amount");
+
+					if(!String.IsNullOrEmpty(bankAccountChoose) && !String.IsNullOrEmpty(moneyAmountString))
+					{
+						try
+						{
+							bankAccountIndex = Int32.Parse(bankAccountChoose);
+						}
+						catch(Exception e)
+						{
+							Console.WriteLine($"please write a number BankAccountIndex now: {bankAccountChoose}");
+							Console.Write(e);
+							continue;
+						}
+
+						try
+						{
+							moneyAmount = float.Parse(moneyAmountString);
+						}
+						catch(Exception e)
+						{
+							Console.WriteLine($"please write an amount for BankAccount - now: {moneyAmountString}");
+							Console.Write(e);
+							continue;
+						}
+					}
+
+					if(bankAccountIndex != null && moneyAmount != null)
+					{
+						inputTrue = true;
+					}
+				}
+
+				// calling bankaccount and choosing value
+				int finalBankAccountIndex = (int)bankAccountIndex;
+				decimal money = (decimal)(moneyAmount*1000);
+				bank.BankAccountList[finalBankAccountIndex].amount.addValue(money);
+			}
+			else if(menuSelectBankAccount.Equals("p", StringComparison.InvariantCultureIgnoreCase))
+			{
+				List<(string, string)> AccountList = bank.getBankAccountListMenuByType(BankAccountType.account);
+				int? bankAccountIndex = null;
+				float? moneyAmount = null;
+				bool inputTrue = false;
+
+				while(!inputTrue)
+				{
+					string? bankAccountChoose = tb.menuMulti(AccountList, "BankAccount Deposit", "Bank Account");
+					string? moneyAmountString = tb.getStringCli("Money Amount");
+
+					if(!String.IsNullOrEmpty(bankAccountChoose) && !String.IsNullOrEmpty(moneyAmountString))
+					{
+						try
+						{
+							bankAccountIndex = Int32.Parse(bankAccountChoose);
+						}
+						catch(Exception e)
+						{
+							Console.WriteLine($"please write a number BankAccountIndex now: {bankAccountChoose}");
+							continue;
+						}
+
+						try
+						{
+							moneyAmount = float.Parse(moneyAmountString);
+						}
+						catch(Exception e)
+						{
+							Console.WriteLine($"please write an amount for BankAccount - now: {moneyAmountString}");
+							continue;
+						}
+					}
+
+					if(bankAccountIndex != null && moneyAmount != null)
+					{
+						inputTrue = true;
+					}
+				}
+
+				// calling bankaccount and choosing value
+				int finalBankAccountIndex = (int)bankAccountIndex;
+				decimal money = (decimal)(moneyAmount*1000);
+				person.addMoney(bank.BankAccountList[finalBankAccountIndex].amount.giveMoney(money));
+			}
+		}
+
+	}
+
+	public void menuBankMortgage()
+	{
+		string? menuSelectBankMortgage = string.Empty;
+
+		// Choose Bankaccount is to choose mortgage and pay this 
+		List<(string, string)> menuBankMortgageDict = new List<(string, string)>
+		{
+			("Show Mortgage Account","s"),
+			("Create Bank Account","c"),
+			("Choose Bank Account","w"),
+			("Back to Bank Menu","q")
+		};
+
+		while(!menuSelectBankMortgage.Equals("q", StringComparison.CurrentCultureIgnoreCase))
+		{
+			menuSelectBankMortgage = tb.menuMulti(menuBankMortgageDict, "Menu Bank Mortgage", "Bank");
+
+			if(menuSelectBankMortgage.Equals("s", StringComparison.CurrentCultureIgnoreCase))
+			{
+				//bank.getBankAccountListMenuByType()
+				List<(string accountName, string accountSaldo)>? bankAccountList = bank.getBankAccountSaldoListByType(BankAccountType.mortage);
+
+				if(bankAccountList != null)
+				{
+					tb.cliTable(bankAccountList, 2);
+				}
+			}
+			else if(menuSelectBankMortgage.Equals("c", StringComparison.CurrentCultureIgnoreCase))
+			{
+				string? accountName = null; 
+				while(accountName == null)
+				{
+					accountName = tb.getStringCli("Account Name:");
+				}
+				
+				(Money moneyWork, int sleepyness) = sjm.Work(100);
+				float income = moneyWork.getValueFloat();
+
+				// Check and max amount 
+				(decimal money, bool possible) = bank.getMaxMortgageValue(income, bank.getMoneySumFloatByType(null));
+				float choosenValue = -1;
+				bool rightValue = false;
+				while(rightValue == false)
+				{
+					
+				}
+
+				decimal amount = 0;
+				bank.addBankAccount((string)accountName, new Money(amount), BankAccountType.mortage);
+			}
+			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
+			{
+
+			}
+		}
+
+	}
+
+	public void menuBankCredit()
+	{
+		string? menuSelectBankCredit = string.Empty;
+
+		List<(string, string)> menuBankCredit = new List<(string, string)>
+		{
+			("Back to Bank Menu","q")
 		};
 	}
 
@@ -44,7 +258,7 @@ public class Cli
 			// implement menu
 			("Next Day", "n"),
 			("Go to Bank", "b"),
-			("Go to standard Jobs", "j"),
+			("Go to Standard Jobs", "j"),
 			("Go to Main Menu", "q")
 		};
 
@@ -113,7 +327,7 @@ public class Cli
 	public void run()
 	{
 		Person person;
-		string menuSelect = "";
+		string? menuSelect = "";
 		while(!menuSelect.Equals("q"))
 		{
 			menuSelect = menuMain();
