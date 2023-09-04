@@ -249,7 +249,7 @@ public class Cli
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
-
+				// todo
 			}
 		}
 
