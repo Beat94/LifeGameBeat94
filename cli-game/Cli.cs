@@ -234,6 +234,7 @@ public class Cli
 					}
 					catch(Exception ex)
 					{
+						// ist machbar?
 						Console.Write(ex);
 						continue;
 					}
@@ -249,7 +250,9 @@ public class Cli
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
-				// todo
+				// todo:Choose Bank Account create
+				// Create new menu and new functions
+
 			}
 		}
 
