@@ -250,9 +250,42 @@ public class Cli
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
-				// todo:Choose Bank Account create
-				// Create new menu and new functions
+				// todo:Choose Bank Account and check if it is a usual account or a negative bank account. 
+				// depending on this check show deposit or payout
 
+				// List of Bankaccounts
+				List<(string,string)> BankAccountList = bank.getBankAccountListMenuByType(null);
+				List<(string,string)> BankAccountMenu = new List<(string,string)>
+				{
+					("","")
+				};
+
+				int choosenAccountInt = 99999;
+				string choosenAccount = "";
+				bool rightChoice = false;
+
+				while(rightChoice == false)
+				{
+					choosenAccount = tb.menuMulti(BankAccountList, "Choose Bankaccount", "Bankaccount");
+
+					try
+					{
+						choosenAccountInt = Int32.Parse(choosenAccount);
+					}
+					catch(FormatException ex)
+					{
+						Console.WriteLine(ex.Message);
+						continue;
+					}
+
+					rightChoice = (choosenAccountInt < BankAccountList.Count) ? true : false;
+				}
+
+				// check account type and depending on it show deposit or payout
+				if(bank.BankAccountList[choosenAccountInt].bankAccountType == BankAccountType.account)
+				{
+					BankAccountMenu.Add(("",""));
+				}
 			}
 		}
 
