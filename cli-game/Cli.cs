@@ -257,7 +257,7 @@ public class Cli
 				List<(string,string)> BankAccountList = bank.getBankAccountListMenuByType(null);
 				List<(string,string)> BankAccountMenu = new List<(string,string)>
 				{
-					("","")
+					("Deposit Account","d")
 				};
 
 				int choosenAccountInt = 99999;
@@ -284,8 +284,12 @@ public class Cli
 				// check account type and depending on it show deposit or payout
 				if(bank.BankAccountList[choosenAccountInt].bankAccountType == BankAccountType.account)
 				{
-					BankAccountMenu.Add(("",""));
+					BankAccountMenu.Add(("Payout Account","p"));
 				}
+
+				BankAccountMenu.Add(("Go to Menu Bank","q"));
+
+				
 			}
 		}
 
