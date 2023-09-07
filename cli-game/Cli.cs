@@ -189,8 +189,8 @@ public class Cli
 		List<(string, string)> menuBankMortgageDict = new List<(string, string)>
 		{
 			("Show Mortgage Account","s"),
-			("Create Bank Account","c"),
-			("Choose Bank Account","w"),
+			("Create Mortgage","c"),
+			("Choose Mortgage Account","w"),
 			("Back to Bank Menu","q")
 		};
 
@@ -254,11 +254,12 @@ public class Cli
 				// depending on this check show deposit or payout
 
 				// List of Bankaccounts
-				List<(string,string)> BankAccountList = bank.getBankAccountListMenuByType(null);
+				List<(string,string)> BankAccountList = bank.getBankAccountListMenuByType(BankAccountType.mortage);
 				List<(string,string)> BankAccountMenu = new List<(string,string)>
 				{
-					("Deposit Account","d")
-				};
+					("Deposit Account","d"),
+                    ("Go to Menu Bank","q")
+                };
 
 				int choosenAccountInt = 99999;
 				string choosenAccount = "";
@@ -281,13 +282,12 @@ public class Cli
 					rightChoice = (choosenAccountInt < BankAccountList.Count) ? true : false;
 				}
 
-				// check account type and depending on it show deposit or payout
-				if(bank.BankAccountList[choosenAccountInt].bankAccountType == BankAccountType.account)
-				{
-					BankAccountMenu.Add(("Payout Account","p"));
-				}
+				string choosenMortgageMenu = tb.menuMulti(BankAccountMenu, bank.BankAccountList[choosenAccountInt].accountName, "Choose");
 
-				BankAccountMenu.Add(("Go to Menu Bank","q"));
+				if (choosenMortgageMenu.Equals("d", StringComparison.InvariantCultureIgnoreCase))
+				{ 
+					// choose ammount to pay into negative account
+				}
 
 				
 			}
