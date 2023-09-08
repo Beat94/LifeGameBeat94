@@ -287,6 +287,14 @@ public class Cli
 				if (choosenMortgageMenu.Equals("d", StringComparison.InvariantCultureIgnoreCase))
 				{ 
 					// choose ammount to pay into negative account
+					string amountStr = "";
+					bool filledAndTrue = false;
+					while(filledAndTrue == false)
+					{
+						amountStr = tb.getStringCli("Choose amount to pay back");
+						
+					}
+					
 				}
 
 				
