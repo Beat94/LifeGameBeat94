@@ -250,9 +250,6 @@ public class Cli
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
-				// todo:Choose Bank Account and check if it is a usual account or a negative bank account. 
-				// depending on this check show deposit or payout
-
 				// List of Bankaccounts
 				List<(string,string)> BankAccountList = bank.getBankAccountListMenuByType(BankAccountType.mortage);
 				List<(string,string)> BankAccountMenu = new List<(string,string)>
@@ -286,21 +283,38 @@ public class Cli
 
 				if (choosenMortgageMenu.Equals("d", StringComparison.InvariantCultureIgnoreCase))
 				{ 
-					// choose ammount to pay into negative account
+					// choose amount to pay into negative account
 					string amountStr = "";
 					bool filledAndTrue = false;
+					float amount = 0;
+					decimal amountD = 0;
+
 					while(filledAndTrue == false)
 					{
 						amountStr = tb.getStringCli("Choose amount to pay back");
-						
-					}
-					
-				}
 
-				
+						try
+						{
+							amount = float.Parse(amountStr);
+						}
+						catch (FormatException ex)
+						{
+                            Console.Write(ex);
+                            continue;
+                        }
+
+						if (amount <= bank.BankAccountList[choosenAccountInt].amount.getValueFloat() && amount <= person.money.getValueFloat())
+						{
+							filledAndTrue = true;
+							amountD = (decimal)(amount * 1000);
+                        }
+					}
+
+					person.money.giveMoney(amountD);
+                    bank.BankAccountList[choosenAccountInt].amount.giveMoney(amountD);
+                }
 			}
 		}
-
 	}
 
 	public void menuBankCredit()

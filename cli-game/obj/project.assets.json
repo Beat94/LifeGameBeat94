@@ -8,24 +8,31 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Beat\\.nuget\\packages\\": {}
+    "C:\\Users\\Beat\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj",
+      "projectUniqueName": "D:\\eigene-projekte\\C-Sharp\\LifeGameBeat94\\cli-game\\cli-game.csproj",
       "projectName": "cli-game",
-      "projectPath": "e:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj",
+      "projectPath": "D:\\eigene-projekte\\C-Sharp\\LifeGameBeat94\\cli-game\\cli-game.csproj",
       "packagesPath": "C:\\Users\\Beat\\.nuget\\packages\\",
-      "outputPath": "e:\\programming\\LifeGameBeat94\\cli-game\\obj\\",
+      "outputPath": "D:\\eigene-projekte\\C-Sharp\\LifeGameBeat94\\cli-game\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Beat\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Beat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
