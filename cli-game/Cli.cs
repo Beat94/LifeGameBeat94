@@ -329,7 +329,7 @@ public class Cli
 
 	public void menuDay()
 	{
-		string? menuSelect2 = string.Empty;
+		string menuSelect2 = "";
 
 		List<(string, string)> menuDayDict = new List<(string, string)>
 		{
@@ -339,7 +339,6 @@ public class Cli
 			("Go to Standard Jobs", "j"),
 			("Go to Main Menu", "q")
 		};
-
 
 		while(!menuSelect2.Equals("q", StringComparison.CurrentCultureIgnoreCase))
 		{
