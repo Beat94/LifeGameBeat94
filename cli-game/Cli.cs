@@ -45,7 +45,7 @@ public class Cli
 				float valuePlayer = bank.getMoneySumFloatByType(null);
 				valuePlayer += person.money.getValueFloat();
 
-				Console.WriteLine("Financial State");
+				Console.WriteLine("\nFinancial State");
 				// List of Financial state
 				List<(string, string)> accountSaldoList = bank.getBankAccountSaldoListByType(null);
 				accountSaldoList.Add(("Total value", valuePlayer.ToString()));
@@ -71,10 +71,12 @@ public class Cli
 
 	public void menuBankAccount()
 	{
-		string? menuSelectBankAccount = string.Empty;
+		string menuSelectBankAccount = "";
 
 		List<(string, string)> menuBankAccount = new List<(string, string)>
 		{
+			("Create Account", "c"),
+			("Remove Account", "r"),
 			("Deposit Money","d"),
 			("Payout Money","p"),
 			("Back to Bank Menu","q")
@@ -83,7 +85,18 @@ public class Cli
 
 		while(!menuSelectBankAccount.Equals("q", StringComparison.InvariantCultureIgnoreCase))
 		{
-			if(menuSelectBankAccount.Equals("d", StringComparison.InvariantCultureIgnoreCase))
+			menuSelectBankAccount = tb.menuMulti(menuBankAccount, "Bank Account Menu", "option");
+
+			if(menuSelectBankAccount.Equals("c", StringComparison.InvariantCultureIgnoreCase))
+			{
+				string accountName = tb.getStringCli("Bankaccount name");
+				bank.addBankAccount(accountName,new Money(0), BankAccountType.account);
+			}
+			else if(menuSelectBankAccount.Equals("r", StringComparison.InvariantCultureIgnoreCase))
+			{
+				throw new NotImplementedException();
+			}
+			else if(menuSelectBankAccount.Equals("d", StringComparison.InvariantCultureIgnoreCase))
 			{
 				List<(string, string)> AccountList = bank.getBankAccountListMenuByType(BankAccountType.account);
 				int? bankAccountIndex = null;
@@ -129,6 +142,7 @@ public class Cli
 				// calling bankaccount and choosing value
 				int finalBankAccountIndex = (int)bankAccountIndex;
 				decimal money = (decimal)(moneyAmount*1000);
+				person.money.giveMoney(money);
 				bank.BankAccountList[finalBankAccountIndex].amount.addValue(money);
 			}
 			else if(menuSelectBankAccount.Equals("p", StringComparison.InvariantCultureIgnoreCase))
@@ -213,7 +227,7 @@ public class Cli
 				string? accountName = null; 
 				while(accountName == null)
 				{
-					accountName = tb.getStringCli("Account Name:");
+					accountName = tb.getStringCli("Account Name");
 				}
 				
 				(Money moneyWork, int sleepyness) = sjm.Work(100);
@@ -239,7 +253,7 @@ public class Cli
 						continue;
 					}
 
-					if(choosenValue > 0 && choosenValue <= maxMoney)
+					if(choosenValue <= maxMoney)
 					{
 						rightValue = true;
 					}
@@ -372,7 +386,7 @@ public class Cli
 		List<(string, string)> menuJobDict = new List<(string, string)>
 		{
 			("get job", "g"),
-			("leave jJob", "l"),
+			("leave job", "l"),
 			("work","w"),
 			("go back to day menu","q")
 		};

@@ -62,10 +62,15 @@ public class Toolbox
     }
 
     // for input in cli
-    public string? getStringCli(string message)
+    public string getStringCli(string message)
 	{
 		Console.Write(message + ": ");
-		return Console.ReadLine();
+        string output = "";
+        while(output.Equals(""))
+        {
+            output = Console.ReadLine();
+        }
+		return output;
 	}
 
 
