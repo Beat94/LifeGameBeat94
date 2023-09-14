@@ -7,6 +7,7 @@ public class Cli
 	Person person = new Person("");
 	Bank bank = new Bank("Public Bank", 1,1,1,1);
 
+
 	public string? menuMain()
 	{
 		List<(string, string)> menuDict = new List<(string,string)>
