@@ -261,7 +261,8 @@ public class Cli
 				}
 
 				decimal amount = 0;
-				bank.addBankAccount((string)accountName, new Money((decimal) choosenValue*1000), BankAccountType.mortage);
+				bank.addBankAccount((string)accountName, new Money((decimal) -choosenValue*1000), BankAccountType.mortage);
+				person.addMoney(new Money((decimal) choosenValue*1000));
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
