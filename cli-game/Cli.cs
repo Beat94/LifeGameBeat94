@@ -335,12 +335,21 @@ public class Cli
 
 	public void menuBankCredit()
 	{
-		string? menuSelectBankCredit = string.Empty;
+		string menuSelectBankCredit = "";
 
 		List<(string, string)> menuBankCredit = new List<(string, string)>
 		{
+			("Show Credit Account","s"),
+			("Create Credit","c"),
+			("Choose Credit Account","w"),
 			("Back to Bank Menu","q")
 		};
+
+		while(menuSelectBankCredit.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		{
+			menuSelectBankCredit = tb.menuMulti(menuBankCredit, "Credit Menu", "Menu");
+
+		}
 	}
 
 	public void menuDay()
