@@ -7,6 +7,7 @@ public class Cli
 	Person person = new Person("");
 	Bank bank = new Bank("Public Bank", 1,1,1,1);
 
+
 	public string? menuMain()
 	{
 		List<(string, string)> menuDict = new List<(string,string)>
@@ -260,7 +261,8 @@ public class Cli
 				}
 
 				decimal amount = 0;
-				bank.addBankAccount((string)accountName, new Money((decimal) choosenValue*1000), BankAccountType.mortage);
+				bank.addBankAccount((string)accountName, new Money((decimal) -choosenValue*1000), BankAccountType.mortage);
+				person.addMoney(new Money((decimal) choosenValue*1000));
 			}
 			else if(menuSelectBankMortgage.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
@@ -333,12 +335,21 @@ public class Cli
 
 	public void menuBankCredit()
 	{
-		string? menuSelectBankCredit = string.Empty;
+		string menuSelectBankCredit = "";
 
 		List<(string, string)> menuBankCredit = new List<(string, string)>
 		{
+			("Show Credit Account","s"),
+			("Create Credit","c"),
+			("Choose Credit Account","w"),
 			("Back to Bank Menu","q")
 		};
+
+		while(menuSelectBankCredit.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		{
+			menuSelectBankCredit = tb.menuMulti(menuBankCredit, "Credit Menu", "Menu");
+
+		}
 	}
 
 	public void menuDay()
