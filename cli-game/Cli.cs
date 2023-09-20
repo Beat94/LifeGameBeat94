@@ -349,18 +349,6 @@ public class Cli
 		{
 			menuSelectBankCredit = tb.menuMulti(menuBankCredit, "Credit Menu", "Menu");
 
-			if(menuSelectBankCredit.Equals("s", StringComparison.CurrentCultureIgnoreCase))
-			{
-
-			}
-			else if(menuSelectBankCredit.Equals("c", StringComparison.CurrentCultureIgnoreCase))
-			{
-
-			}
-			else if(menuSelectBankCredit.Equals("w", StringComparison.CurrentCultureIgnoreCase))
-			{
-				
-			}
 		}
 	}
 
