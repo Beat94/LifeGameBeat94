@@ -349,19 +349,11 @@ public class Cli
 		{
 			menuSelectBankCredit = tb.menuMulti(menuBankCredit, "Credit Menu", "Menu");
 
-			if (menuSelectBankCredit.Equals("s", StringComparison.InvariantCultureIgnoreCase))
+			if(menuSelectBankCredit.Equals("s", StringComparison.InvariantCultureIgnoreCase))
 			{
-				BankAccountType bankAccountType = BankAccountType.credit;
 
-				List<(string,string)> BankAccountList = bank.getBankAccountListMenuByType(bankAccountType);
-				BankAccountList.Add(("Total:", bank.getMoneySumFloatByType(bankAccountType).ToString()));
-
-				if (BankAccountList.Count > 1)
-				{ 
-					tb.cliTable(BankAccountList, 2);
-				}
 			}
-			else if (menuSelectBankCredit.Equals("c", StringComparison.InvariantCultureIgnoreCase))
+			else if(menuSelectBankCredit.Equals("c", StringComparison.InvariantCultureIgnoreCase))
 			{
 				// 
 			}
