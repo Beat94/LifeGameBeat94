@@ -351,15 +351,19 @@ public class Cli
 
 			if(menuSelectBankCredit.Equals("s", StringComparison.InvariantCultureIgnoreCase))
 			{
-
+				if(bank.getBankAccountListMenuByType(BankAccountType.credit).Count < 0)
+				{
+					List<(string,string)> baList =bank.getBankAccountListMenuByType(BankAccountType.credit);
+					tb.cliTable(baList, 2);
+				}
 			}
 			else if(menuSelectBankCredit.Equals("c", StringComparison.InvariantCultureIgnoreCase))
 			{
-
+				
 			}
 			else if(menuSelectBankCredit.Equals("w", StringComparison.InvariantCultureIgnoreCase))
 			{
-				
+
 			}
 		}
 	}
