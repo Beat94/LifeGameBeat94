@@ -353,13 +353,48 @@ public class Cli
 			{
 				if(bank.getBankAccountListMenuByType(BankAccountType.credit).Count < 0)
 				{
+					Console.WriteLine("Credit Accounts:");
 					List<(string,string)> baList =bank.getBankAccountListMenuByType(BankAccountType.credit);
 					tb.cliTable(baList, 2);
 				}
 			}
 			else if(menuSelectBankCredit.Equals("c", StringComparison.InvariantCultureIgnoreCase))
 			{
+				string? accountName = null; 
+				while(accountName == null)
+				{
+					accountName = tb.getStringCli("Account Name");
+				}
 				
+				
+				float savings = bank.getMaxCreditValue(bank.getMoneySumFloatByType(null)*1000 + person.money.getValueFloat();
+
+
+				// Check and max amount 
+				float maxMoney = bank.getMaxCreditValue(savings);
+				float choosenValue = -1;
+				bool rightValue = false;
+
+				while(rightValue == false)
+				{
+					string valueString = tb.getStringCli($"Please choose your mortgage. Maximum possible mortgage: {maxMoney} > ");
+					try
+					{
+						choosenValue = float.Parse(valueString);
+					}
+					catch(Exception ex)
+					{
+						// ist machbar?
+						Console.Write(ex);
+						continue;
+					}
+
+					if(choosenValue <= maxMoney)
+					{
+						rightValue = true;
+						bank.addBankAccount(accountName, new Money((decimal) (choosenValue * -1000)), BankAccountType.credit);
+					}
+				}
 			}
 			else if(menuSelectBankCredit.Equals("w", StringComparison.InvariantCultureIgnoreCase))
 			{
