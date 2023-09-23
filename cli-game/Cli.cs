@@ -397,6 +397,68 @@ public class Cli
 			else if(menuSelectBankCredit.Equals("w", StringComparison.InvariantCultureIgnoreCase))
 			{
 				// Choose credit account
+				List<(string,string)> BankAccountList = bank.getBankAccountListMenuByType(BankAccountType.credit);
+				List<(string,string)> BankAccountMenu = new List<(string,string)>
+				{
+					("Deposit Account","d"),
+                    ("Go to Menu Bank","q")
+                };
+
+				int choosenAccountInt = 99999;
+				string choosenAccount = "";
+				bool rightChoice = false;
+
+				while(rightChoice == false)
+				{
+					choosenAccount = tb.menuMulti(BankAccountList, "Choose Bankaccount", "Bankaccount");
+
+					try
+					{
+						choosenAccountInt = Int32.Parse(choosenAccount);
+					}
+					catch(FormatException ex)
+					{
+						Console.WriteLine(ex.Message);
+						continue;
+					}
+
+					rightChoice = (choosenAccountInt < BankAccountList.Count) ? true : false;
+				}
+
+				string choosenMortgageMenu = tb.menuMulti(BankAccountMenu, bank.BankAccountList[choosenAccountInt].accountName, "Choose");
+
+				if (choosenMortgageMenu.Equals("d", StringComparison.InvariantCultureIgnoreCase))
+				{ 
+					// choose amount to pay into negative account
+					string amountStr = "";
+					bool filledAndTrue = false;
+					float amount = 0;
+					decimal amountD = 0;
+
+					while(filledAndTrue == false)
+					{
+						amountStr = tb.getStringCli("Choose amount to pay back");
+
+						try
+						{
+							amount = float.Parse(amountStr);
+						}
+						catch (FormatException ex)
+						{
+                            Console.Write(ex);
+                            continue;
+                        }
+
+						if (amount <= bank.BankAccountList[choosenAccountInt].amount.getValueFloat() && amount <= person.money.getValueFloat())
+						{
+							filledAndTrue = true;
+							amountD = (decimal)(amount * 1000);
+                        }
+					}
+
+					person.money.giveMoney(amountD);
+                    bank.BankAccountList[choosenAccountInt].amount.giveMoney(amountD);
+                }
 			}
 		}
 	}
