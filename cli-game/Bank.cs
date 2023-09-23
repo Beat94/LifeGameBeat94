@@ -1,3 +1,4 @@
+
 public class Bank : IFinance
 {
     public string NameBank {get;set;}
@@ -22,7 +23,7 @@ public class Bank : IFinance
         this.negativeInterestMortgage = negativeInterestMortgage;
     }
 
-    public decimal getMaxCreditValue(decimal savingValue) => savingValue * 30;
+    public float getMaxCreditValue(float savingValue) => savingValue * 30;
 
     public (decimal, bool) getMaxMortgageValue(float income, float valueMoney)
     {
@@ -84,13 +85,17 @@ public class Bank : IFinance
         return outputList;
     }
 
-    public List<(string,string)>? getBankAccountListMenuByType(BankAccountType bankAccountType)
+    public List<(string,string)>? getBankAccountListMenuByType(BankAccountType? bankAccountType)
     {
         List<(string,string)> outputList = new List<(string, string)>();
 
         for(int i = 0; i < BankAccountList.Count; i++)
         {
             if(BankAccountList[i].bankAccountType == bankAccountType)
+            {
+                outputList.Add((BankAccountList[i].accountName, i.ToString()));
+            }
+            else
             {
                 outputList.Add((BankAccountList[i].accountName, i.ToString()));
             }
