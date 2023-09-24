@@ -366,7 +366,7 @@ public class Cli
 					accountName = tb.getStringCli("Account Name");
 				}
 				
-				float savings = bank.getMaxCreditValue(bank.getMoneySumFloatByType(null)*1000 + person.money.getValueFloat();
+				float savings = bank.getMaxCreditValue(bank.getMoneySumFloatByType(null)*1000 + person.money.getValueFloat());
 
 				// Check and max amount 
 				float maxMoney = bank.getMaxCreditValue(savings);

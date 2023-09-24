@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj": {}
+    "E:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj": {}
   },
   "projects": {
-    "e:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj": {
+    "E:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj",
+        "projectUniqueName": "E:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj",
         "projectName": "cli-game",
-        "projectPath": "e:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj",
+        "projectPath": "E:\\programming\\LifeGameBeat94\\cli-game\\cli-game.csproj",
         "packagesPath": "C:\\Users\\Beat\\.nuget\\packages\\",
-        "outputPath": "e:\\programming\\LifeGameBeat94\\cli-game\\obj\\",
+        "outputPath": "E:\\programming\\LifeGameBeat94\\cli-game\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Beat\\AppData\\Roaming\\NuGet\\NuGet.Config"
