@@ -5,7 +5,7 @@ public class Cli
 	Toolbox tb = new Toolbox();
 	StandardJobsManager sjm = new StandardJobsManager();
 	Person person = new Person("");
-	Bank bank = new Bank("Public Bank", 1,1,1,1);
+	Bank bank = new Bank("Public Bank", 105,102,116,110);
 
 
 	public string? menuMain()
