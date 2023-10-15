@@ -37,11 +37,11 @@ public class Cli
 			("Go to Day Menu", "q")
 		};
 
-		while(!menuSelectBank.Equals("q", StringComparison.CurrentCultureIgnoreCase))
+		while(!menuSelectBank.Equals("q", StringComparison.InvariantCultureIgnoreCase))
 		{
 			menuSelectBank = tb.menuMulti(menuBankDict, "Menu Bank", "Bank");
 
-			if(menuSelectBank.Equals("s",StringComparison.CurrentCultureIgnoreCase))
+			if(menuSelectBank.Equals("s",StringComparison.InvariantCultureIgnoreCase))
 			{
 				float valuePlayer = bank.getMoneySumFloatByType(null);
 				valuePlayer += person.money.getValueFloat();
@@ -52,17 +52,17 @@ public class Cli
 				accountSaldoList.Add(("Total value", valuePlayer.ToString()));
 				tb.cliTable(accountSaldoList, 2);
 			}
-			else if(menuSelectBank.Equals("a",StringComparison.CurrentCultureIgnoreCase))
+			else if(menuSelectBank.Equals("a",StringComparison.InvariantCultureIgnoreCase))
 			{
 				//Console.WriteLine("Account Menu");
 				menuBankAccount();
 			}
-			else if(menuSelectBank.Equals("m",StringComparison.CurrentCultureIgnoreCase))
+			else if(menuSelectBank.Equals("m",StringComparison.InvariantCultureIgnoreCase))
 			{
 				//Console.WriteLine("Mortgage Menu");
 				menuBankMortgage();
 			}
-			else if(menuSelectBank.Equals("c",StringComparison.CurrentCultureIgnoreCase))
+			else if(menuSelectBank.Equals("c",StringComparison.InvariantCultureIgnoreCase))
 			{
 				//Console.WriteLine("Credit Menu");
 				menuBankCredit();
