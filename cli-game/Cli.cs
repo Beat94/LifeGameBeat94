@@ -530,10 +530,15 @@ public class Cli
 			}
 			else if (menuSelectJob.Equals("w", StringComparison.CurrentCultureIgnoreCase))
 			{
-				// add workpercentage question
-				(Money salary, int sleepy) = sjm.Work(100);
-				person.addMoney(salary);
-				person.sleepyness = person.sleepyness - sleepy;
+				int workPercentage = 100;
+
+				if(person.sleepyness >= workPercentage)
+				{
+					(Money salary, int sleepy) = sjm.Work(workPercentage);
+					person.addMoney(salary);
+					person.sleepyness = person.sleepyness - sleepy;
+					// add workpercentage question
+				}
 			}
 		}
 	}
