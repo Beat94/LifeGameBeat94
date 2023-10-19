@@ -345,7 +345,7 @@ public class Cli
 			("Back to Bank Menu","q")
 		};
 
-		while(menuSelectBankCredit.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		while(!menuSelectBankCredit.Equals("q", StringComparison.InvariantCultureIgnoreCase))
 		{
 			menuSelectBankCredit = tb.menuMulti(menuBankCredit, "Credit Menu", "Menu");
 
