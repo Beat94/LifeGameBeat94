@@ -103,40 +103,57 @@ public class Cli
 				int? bankAccountIndex = null;
 				float? moneyAmount = null;
 				bool inputTrue = false;
+				string? bankAccountChoose = null;
+				string? moneyAmountString = null;
 
-				while(!inputTrue)
+                while (inputTrue == false)
 				{
-					string? bankAccountChoose = tb.menuMulti(AccountList, "BankAccount Deposit", "Bank Account");
-					string? moneyAmountString = tb.getStringCli("Money Amount");
+					bankAccountChoose = tb.menuMulti(AccountList, "BankAccount Deposit", "Bank Account");
 
-					if(!String.IsNullOrEmpty(bankAccountChoose) && !String.IsNullOrEmpty(moneyAmountString))
+					if (!String.IsNullOrEmpty(bankAccountChoose))
 					{
 						try
 						{
 							bankAccountIndex = Int32.Parse(bankAccountChoose);
 						}
-						catch(Exception e)
+						catch (Exception e)
 						{
 							Console.WriteLine($"please write a number BankAccountIndex now: {bankAccountChoose}");
 							Console.Write(e);
 							continue;
 						}
 
+						if (bankAccountIndex != null)
+						{
+							inputTrue = true;
+						}
+					}
+				}
+
+				inputTrue = false;
+
+				while (inputTrue == false)
+				{ 
+					moneyAmountString = tb.getStringCli("Money Amount");
+
+					if (!String.IsNullOrEmpty(moneyAmountString))
+					{
 						try
 						{
 							moneyAmount = float.Parse(moneyAmountString);
 						}
-						catch(Exception e)
+						catch (Exception e)
 						{
 							Console.WriteLine($"please write an amount for BankAccount - now: {moneyAmountString}");
 							Console.Write(e);
 							continue;
 						}
-					}
-
-					if(bankAccountIndex != null && moneyAmount != null)
-					{
-						inputTrue = true;
+						if (moneyAmount != null
+							&& moneyAmount >= 0
+							&& moneyAmount <= person.money.getValueFloat())
+						{
+							inputTrue = true;
+						}
 					}
 				}
 
