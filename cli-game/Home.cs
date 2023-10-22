@@ -8,9 +8,11 @@ public class Home : Asset
         Money valueFull, 
         float status, 
         bool isHouse, 
-        int roomCount) : base(
+        int roomCount
+        ) : base(
             valueFull, 
-            status)
+            status
+        )
     {
         this.isHouse = isHouse;
         this.roomCount = roomCount;
