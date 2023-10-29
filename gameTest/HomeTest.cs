@@ -1,6 +1,6 @@
 namespace gameTest;
 
-public class UnitTest1
+public class HomeTest
 {
     [Fact]
     public void HomeTestEqual()
