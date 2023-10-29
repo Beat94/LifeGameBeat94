@@ -21,6 +21,7 @@ internal class AssetManager:IFinance
 
         for(int i = 0; i < assetList.Count; i++)
         {
+            //if home then home+roomcount if vehicle then something else. 
             AssetListOut.Add((assetList[i].GetType().ToString(), i.ToString()));
         }
 
