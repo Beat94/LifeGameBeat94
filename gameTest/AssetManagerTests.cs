@@ -1,6 +1,6 @@
 namespace gameTest;
 
-public class AssetManagerTest
+public class AssetManagerTests
 {
     [Fact]
     public void AssetManagerAddHome()
