@@ -2,6 +2,14 @@ public class AssetManager:IFinance
 {
     private List<Asset> assetList = new List<Asset>();
 
+    public bool isManaged {get; set;}
+
+    public AssetManager(bool? isManaged = false)
+    {
+        this.isManaged = (bool) isManaged;
+    }
+
+
     public void newDay()
     {
         foreach(Asset asset in assetList)
@@ -31,6 +39,11 @@ public class AssetManager:IFinance
         }
 
         return AssetListOut;
+    }
+
+    public void createRandom()
+    {
+
     }
 
 }

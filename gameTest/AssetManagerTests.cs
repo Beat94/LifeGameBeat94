@@ -2,6 +2,17 @@ namespace gameTest;
 
 public class AssetManagerTests
 {
+    [Theory]
+    [InlineData(null,false)]
+    [InlineData(false,false)]
+    [InlineData(true,true)]
+    public void AssetManagerConstructor(bool? constructor, bool result)
+    {
+        AssetManager assetManager = new AssetManager(constructor);
+        Assert.Equal(result, assetManager.isManaged);
+    }
+
+
     [Fact]
     public void AssetManagerAddHome()
     {
