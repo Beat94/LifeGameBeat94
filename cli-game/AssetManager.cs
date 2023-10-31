@@ -6,6 +6,10 @@ public class AssetManager:IFinance
 
     public AssetManager(bool? isManaged = false)
     {
+        if(isManaged == null)
+        {
+            isManaged = false;
+        }
         this.isManaged = (bool) isManaged;
     }
 

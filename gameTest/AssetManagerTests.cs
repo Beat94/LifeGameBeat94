@@ -3,10 +3,9 @@ namespace gameTest;
 public class AssetManagerTests
 {
     [Theory]
-    [InlineData(null,false)]
     [InlineData(false,false)]
     [InlineData(true,true)]
-    public void AssetManagerConstructor(bool? constructor, bool result)
+    public void AssetManagerConstructor(bool constructor, bool result)
     {
         AssetManager assetManager = new AssetManager(constructor);
         Assert.Equal(result, assetManager.isManaged);
@@ -16,7 +15,7 @@ public class AssetManagerTests
     [Fact]
     public void AssetManagerAddHome()
     {
-        AssetManager assetManager = new AssetManager();
+        AssetManager assetManager = new AssetManager(false);
         Home home = new Home(
             new Money(200000),
             100f,
