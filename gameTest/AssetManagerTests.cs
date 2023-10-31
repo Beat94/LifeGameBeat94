@@ -31,7 +31,7 @@ public class AssetManagerTests
     [Theory]
     [InlineData(false,0)]
     [InlineData(true,10)]
-    public void AssetManagerCreateRandom(bool managed, int expectedCount)
+    public void AssetManagerCreateRandomCount(bool managed, int expectedCount)
     {
         AssetManager randomAssets = new AssetManager(managed);
 
