@@ -4,13 +4,9 @@ public class AssetManager:IFinance
 
     public bool isManaged {get; set;}
 
-    public AssetManager(bool? isManaged = false)
+    public AssetManager(bool isManaged)
     {
-        if(isManaged == null)
-        {
-            isManaged = false;
-        }
-        this.isManaged = (bool) isManaged;
+        this.isManaged = isManaged;
     }
 
 
@@ -19,6 +15,10 @@ public class AssetManager:IFinance
         foreach(Asset asset in assetList)
         {
             asset.newDay();
+        }
+        if(isManaged)
+        {
+            createRandom();
         }
     }
     
@@ -45,9 +45,40 @@ public class AssetManager:IFinance
         return AssetListOut;
     }
 
-    public void createRandom()
+    private void cleanArray()
     {
+        int assetCount = getAssetListCount();
 
+        while(assetCount > 0)
+        {
+            assetList.RemoveAt(0);
+            assetCount = getAssetListCount();
+        }
+    }
+
+    private void createRandom()
+    {
+        Random random = new Random();
+        cleanArray();
+
+        for(int i = 0; i < 10; i++)
+        {
+            int decision = random.Next(0,1);
+            bool isHouse = false;
+            if(decision >= 1)
+            {
+                isHouse = true;
+            }
+
+            Home house = new Home(
+                new Money(random.Next(50000000,2000000000)),
+                random.Next(50,100),
+                isHouse,
+                random.Next(1,10)
+            );
+
+            assetList.Add(house);
+        }
     }
 
 }

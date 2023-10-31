@@ -27,4 +27,16 @@ public class AssetManagerTests
 
         Assert.Equal(1,assetManager.getAssetListCount());
     }
+
+    [Theory]
+    [InlineData(false,0)]
+    [InlineData(true,10)]
+    public void AssetManagerCreateRandom(bool managed, int expectedCount)
+    {
+        AssetManager randomAssets = new AssetManager(managed);
+
+        randomAssets.newDay();
+
+        Assert.Equal(expectedCount, randomAssets.getAssetListCount());
+    }
 }
