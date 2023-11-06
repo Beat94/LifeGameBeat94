@@ -14,6 +14,8 @@ public class Home : Asset
             status
         )
     {
+        base.valueFull = valueFull;
+        base.status = status;
         this.isHouse = isHouse;
         this.roomCount = roomCount;
     }
