@@ -2,7 +2,17 @@ namespace gameTest;
 
 public class BankTests
 {
-    Bank bank = new Bank("Public Bank", 105,102,116,110);
+    static string bankName = "Public Bank";
+    static decimal positiveInterestBelow200k = 105;
+    static decimal positiveInterestOver200k = 102;
+    static decimal negativeInterestCredit = 116;
+    static decimal negativeInterestMortgage = 110;
+    
+    Bank bank = new Bank(bankName, 
+        positiveInterestBelow200k,
+        positiveInterestOver200k,
+        negativeInterestCredit,
+        negativeInterestMortgage);
 
     [Theory]
     [InlineData(30000, 1000)]
