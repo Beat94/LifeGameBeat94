@@ -69,6 +69,12 @@ public class Person : IFinance
         }
     }
 
+    public void addMoney(Money Income)
+    {
+        money.addValue(Income.getValueDecimal());
+        income30Days[income30Days.Count-1].addValue(Income.getValueDecimal());
+    }
+
     public List<(string,string)> getPersonStats()
     {
         List<(string, string)> personStats = new List<(string, string)>
