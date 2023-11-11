@@ -26,6 +26,7 @@ public class BankTests
 
     [Theory]
     [InlineData(1000000f, 1000000f, 1250000000, false)]
+    [InlineData(10000000f, 1000000f, 1250000000, true)]
     public void getMaxMortgageValueTest(
         float income, 
         float valueMoney, 
