@@ -26,7 +26,11 @@ public class BankTests
 
     [Theory]
     [InlineData(1000000f, 1000000f, 100000, false)]
-    public void getMaxMortgageValueTest(float income, float valueMoney, decimal maxMorgageGoal, bool outputboolGoal)
+    public void getMaxMortgageValueTest(
+        float income, 
+        float valueMoney, 
+        decimal maxMorgageGoal, 
+        bool outputboolGoal)
     {
         (decimal maxMortage, bool outputbool) = bank.getMaxMortgageValue(income, valueMoney);
         Assert.Equal((maxMortage, outputbool) ,(maxMorgageGoal, outputboolGoal));
