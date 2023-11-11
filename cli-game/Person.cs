@@ -60,10 +60,13 @@ public class Person : IFinance
         return output;
     }
 
-    public void addMoney(Money Income)
+    public void addMoney(Money Income, bool isMortgageCredit = false)
     {
         money.addValue(Income.getValueDecimal());
-        income30Days[income30Days.Count-1].addValue(Income.getValueDecimal());
+        if(isMortgageCredit == false)
+        {
+            income30Days[income30Days.Count-1].addValue(Income.getValueDecimal());
+        }
     }
 
     public List<(string,string)> getPersonStats()
