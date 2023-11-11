@@ -23,7 +23,17 @@ public class Bank : IFinance
         this.negativeInterestMortgage = negativeInterestMortgage;
     }
 
-    public float getMaxCreditValue(float savingValue) => savingValue * 30;
+    public float getMaxCreditValue(float savingValue)
+    {
+        float output = 0;
+
+        if(savingValue > 0)
+        {
+            output = savingValue * 30;   
+        }
+
+        return output;
+    }
 
     public (decimal, bool) getMaxMortgageValue(float income, float valueMoney)
     {
