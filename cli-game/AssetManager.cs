@@ -33,14 +33,21 @@ public class AssetManager:IFinance
         assetList.Add(asset);
     }
 
-    public List<(string, string)> getAssetList()
+    public List<(string, string)> getAssetList(AssetType? assetType)
     {
         List<(string,string)> AssetListOut = new();
 
         for(int i = 0; i < assetList.Count; i++)
         {
+            if(assetList[i].GetType().ToString().Equals(assetType.ToString()))
+            {
+                AssetListOut.Add((assetList[i].GetType().ToString(), i.ToString()));
+            }
+            else
+            {
+                AssetListOut.Add((assetList[i].GetType().ToString(), i.ToString()));
+            }
             //if home then home+roomcount if vehicle then something else. 
-            AssetListOut.Add((assetList[i].GetType().ToString(), i.ToString()));
         }
 
         return AssetListOut;
