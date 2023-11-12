@@ -39,7 +39,7 @@ public class AssetManager:IFinance
 
         for(int i = 0; i < assetList.Count; i++)
         {
-            if(assetList[i].GetType().ToString().Equals(assetType.ToString()))
+            if(assetList[i].GetType().ToString().Equals(assetType.ToString()) && !assetType.Equals(null))
             {
                 AssetListOut.Add((assetList[i].GetType().ToString(), i.ToString()));
             }
