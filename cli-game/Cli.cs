@@ -24,6 +24,11 @@ public class Cli
 		return menuSelect;
 	}
 
+	public void menuAssets()
+	{
+
+	}
+
 	public void menuBank()
 	{
 		string? menuSelectBank = string.Empty;
@@ -488,6 +493,7 @@ public class Cli
 		{
 			// implement menu
 			("Next Day", "n"),
+			("Go to Assets", "a"),
 			("Go to Bank", "b"),
 			("Go to Standard Jobs", "j"),
 			("Go to Main Menu", "q")
@@ -500,7 +506,11 @@ public class Cli
 			Console.WriteLine($"Day Menu Day {person.DayCount}");
 			menuSelect2 = tb.menuMulti(menuDayDict, "Day menu", "Day");
 
-			if(menuSelect2.Equals("n", StringComparison.CurrentCultureIgnoreCase))
+			if(menuSelect2.Equals("a", StringComparison.CurrentCultureIgnoreCase))
+			{
+				menuAssets();
+			}
+			else if(menuSelect2.Equals("n", StringComparison.CurrentCultureIgnoreCase))
 			{
 				Console.WriteLine("Next Day");
 				person.newDay();
