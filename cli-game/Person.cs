@@ -5,6 +5,7 @@ public class Person : IFinance
     public int DayCount{get;set;}
     public Money money{get;}
     public List<Money> income30Days = new();
+    public List<Asset> assetList = new();
 
     public Person(string name)
     {
