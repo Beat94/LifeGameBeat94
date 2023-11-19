@@ -26,7 +26,34 @@ public class Cli
 
 	public void menuAssets()
 	{
+		string menuAssets = string.Empty;
 
+		List<(string, string)> menuAssetsDict = new List<(string, string)>
+		{
+			// implement menu
+			("Buy Asset", "b"),
+			("Renovate Asset", "r"),
+			("Sell Asset", "s"),
+			("Go to Main Menu", "q")
+		};
+
+		while(!menuAssets.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		{
+			menuAssets = tb.menuMulti(menuAssetsDict, "Menu Asset", "Asset");
+
+			if(menuAssets.Equals("b", StringComparison.InvariantCultureIgnoreCase))
+			{
+
+			}
+			else if(menuAssets.Equals("r", StringComparison.InvariantCultureIgnoreCase))
+			{
+
+			}
+			else if(menuAssets.Equals("s", StringComparison.InvariantCultureIgnoreCase))
+			{
+				
+			}
+		}
 	}
 
 	public void menuBank()
