@@ -24,6 +24,46 @@ public class Cli
 		return menuSelect;
 	}
 
+	public void menuVehicles()
+	{
+		string menuVehicles = string.Empty;
+
+		List<(string, string)> menuVehiclesDict = new List<(string, string)>
+		{
+			// implement menu
+			("View vehicles", "v"),
+			("Buy vehicles", "b"),
+			("Repair vehicles", "r"),
+			("Sell vehicles", "s"),
+			("Go to Main Menu", "q")
+		};
+
+		while(!menuVehicles.Equals("q",StringComparison.InvariantCultureIgnoreCase))
+		{
+			if(!menuVehicles.Equals("v",StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+			}
+			else if(!menuVehicles.Equals("b",StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+			}
+			else if(!menuVehicles.Equals("r",StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+			}
+			else if(!menuVehicles.Equals("s",StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+			}	
+		}
+	}
+
+	public void menuHousings()
+	{
+		Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
+	}
+
 	public void menuAssets()
 	{
 		string menuAssets = string.Empty;
@@ -31,9 +71,8 @@ public class Cli
 		List<(string, string)> menuAssetsDict = new List<(string, string)>
 		{
 			// implement menu
-			("Buy Asset", "b"),
-			("Renovate Asset", "r"),
-			("Sell Asset", "s"),
+			("Manage vehicles", "v"),
+			("Manage housings", "h"),
 			("Go to Main Menu", "q")
 		};
 
@@ -41,17 +80,13 @@ public class Cli
 		{
 			menuAssets = tb.menuMulti(menuAssetsDict, "Menu Asset", "Asset");
 
-			if(menuAssets.Equals("b", StringComparison.InvariantCultureIgnoreCase))
+			if(menuAssets.Equals("v", StringComparison.InvariantCultureIgnoreCase))
 			{
-
+				menuVehicles();
 			}
-			else if(menuAssets.Equals("r", StringComparison.InvariantCultureIgnoreCase))
+			else if(menuAssets.Equals("h", StringComparison.InvariantCultureIgnoreCase))
 			{
-
-			}
-			else if(menuAssets.Equals("s", StringComparison.InvariantCultureIgnoreCase))
-			{
-				
+				menuHousings();
 			}
 		}
 	}
