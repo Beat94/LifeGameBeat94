@@ -6,7 +6,7 @@ public class Cli
 	StandardJobsManager sjm = new StandardJobsManager();
 	Person person = new Person("");
 	Bank bank = new Bank("Public Bank", 105,102,116,110);
-
+	AssetManager assetManager = new AssetManager(true);
 
 	public string? menuMain()
 	{
@@ -40,12 +40,20 @@ public class Cli
 
 		while(!menuVehicles.Equals("q",StringComparison.InvariantCultureIgnoreCase))
 		{
+			menuVehicles = tb.menuMulti(menuVehiclesDict, "Menu Vehicles", "Vehicles");
+
 			if(!menuVehicles.Equals("v",StringComparison.InvariantCultureIgnoreCase))
 			{
-				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+				List<(string,string)> personalAssets = person.personalAssetManager.getAssetList(AssetType.Vehicle);
+				tb.cliTable(personalAssets);
 			}
 			else if(!menuVehicles.Equals("b",StringComparison.InvariantCultureIgnoreCase))
 			{
+				List<(string,string)> assetManagerListVehicle = assetManager.getAssetList(AssetType.Vehicle);
+				string chosenVehicle = tb.menuMulti(assetManagerListVehicle, "Buy Vehicle", "Buy");
+				
+				// Build logic to transver money - ex. bankaccount transaction
+
 				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
 			}
 			else if(!menuVehicles.Equals("r",StringComparison.InvariantCultureIgnoreCase))
@@ -576,6 +584,7 @@ public class Cli
 			{
 				Console.WriteLine("Next Day");
 				person.newDay();
+				assetManager.newDay();
 			}
 			else if(menuSelect2.Equals("b", StringComparison.CurrentCultureIgnoreCase))
 			{

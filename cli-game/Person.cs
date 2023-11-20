@@ -5,7 +5,7 @@ public class Person : IFinance
     public int DayCount{get;set;}
     public Money money{get;}
     public List<Money> income30Days = new();
-    public List<Asset> assetList = new();
+    public AssetManager personalAssetManager = new(false);
 
     public Person(string name)
     {
@@ -35,6 +35,8 @@ public class Person : IFinance
             income30Days.RemoveAt(30);
             income30Days.Add(new Money(0));
         }
+
+        personalAssetManager.newDay();
     }
 
     public string getDayMonthYear()

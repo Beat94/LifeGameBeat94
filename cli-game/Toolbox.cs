@@ -12,7 +12,7 @@ public class Toolbox
         return size;
     }
     
-    public void cliTable(List<(string s1, string s2)> dict, int distance)
+    public void cliTable(List<(string s1, string s2)> dict, int distance = 2)
     {
         int strSize1 = 0;
         int strSize2 = 0;
