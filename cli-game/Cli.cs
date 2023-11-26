@@ -26,6 +26,8 @@ public class Cli
 
 	public void menuVehicles()
 	{
+		//Vehicle Class has to be implemented
+
 		string menuVehicles = string.Empty;
 
 		List<(string, string)> menuVehiclesDict = new List<(string, string)>
@@ -69,7 +71,43 @@ public class Cli
 
 	public void menuHousings()
 	{
-		Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
+		string menuHousings = string.Empty;
+
+		List<(string, string)> menuHousingsDict = new List<(string, string)>
+		{
+			// implement menu
+			("View housing", "v"),
+			("Buy housing", "b"),
+			("Repair hosuing", "r"),
+			("Sell housing", "s"),
+			("Go to Main Menu", "q")
+		};
+
+		while(!menuHousings.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		{
+			menuHousings = tb.menuMulti(menuHousingsDict, "Menu Housings", "Housings");
+
+			if(menuHousings.Equals("v", StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
+			}
+			else if(menuHousings.Equals("b", StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
+			}
+			else if(menuHousings.Equals("r", StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
+			}
+			else if(menuHousings.Equals("s", StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
+			}
+		}
+
+		
+
+
 	}
 
 	public void menuAssets()
