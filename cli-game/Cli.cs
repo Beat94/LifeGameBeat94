@@ -97,13 +97,33 @@ public class Cli
 			}
 			else if(menuHousings.Equals("b", StringComparison.InvariantCultureIgnoreCase))
 			{
+				bool isInputTrue = false;
+				string choosen = string.Empty;
+				int choosenInt = 0;
 				// Show Housings out of AssetManager
 				List<(string, string)> assetList = assetManager.getAssetList(AssetType.Home);
 				tb.cliTable(assetList);
 
 				// choose Asset with number
-
+				while(isInputTrue == false)
+				{
+					choosen = tb.menuMulti(assetList, "Buy Housing", "to buy");
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+						if(choosenInt >= 0)
+						{
+							isInputTrue = true;
+						}
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception);
+					}
+				}
+				
 				// Check if there are at least the amount of Money that the house costs
+
 
 				// Remove Amount of Money 
 
