@@ -89,6 +89,13 @@ public class Cli
 
 			if(menuHousings.Equals("v", StringComparison.InvariantCultureIgnoreCase))
 			{
+				//should be person
+				List<(string, string)> assetList = person.personalAssetManager.getAssetList(AssetType.Home);
+				if(assetList.Count > 0)
+				{
+					tb.cliTable(assetList);
+				}
+
 				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
 			else if(menuHousings.Equals("b", StringComparison.InvariantCultureIgnoreCase))
