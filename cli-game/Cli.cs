@@ -98,8 +98,10 @@ public class Cli
 			else if(menuHousings.Equals("b", StringComparison.InvariantCultureIgnoreCase))
 			{
 				// Show Housings out of AssetManager
+				List<(string, string)> assetList = assetManager.getAssetList(AssetType.Home);
+				tb.cliTable(assetList);
 
-				// List Housings
+				// choose Asset with number
 
 				// Check if there are at least the amount of Money that the house costs
 
