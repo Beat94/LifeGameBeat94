@@ -78,7 +78,7 @@ public class Cli
 			// implement menu
 			("View housing", "v"),
 			("Buy housing", "b"),
-			("Repair hosuing", "r"),
+			("Repair housing", "r"),
 			("Sell housing", "s"),
 			("Go to Main Menu", "q")
 		};
@@ -89,17 +89,25 @@ public class Cli
 
 			if(menuHousings.Equals("v", StringComparison.InvariantCultureIgnoreCase))
 			{
-				//should be person
 				List<(string, string)> assetList = person.personalAssetManager.getAssetList(AssetType.Home);
 				if(assetList.Count > 0)
 				{
 					tb.cliTable(assetList);
 				}
-
-				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
 			else if(menuHousings.Equals("b", StringComparison.InvariantCultureIgnoreCase))
 			{
+				// Show Housings out of AssetManager
+
+				// List Housings
+
+				// Check if there are at least the amount of Money that the house costs
+
+				// Remove Amount of Money 
+
+				// check house into personal asset and delete it in AssetList
+
+
 				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
 			else if(menuHousings.Equals("r", StringComparison.InvariantCultureIgnoreCase))
