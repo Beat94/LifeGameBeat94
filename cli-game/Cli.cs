@@ -98,6 +98,7 @@ public class Cli
 			else if(menuHousings.Equals("b", StringComparison.InvariantCultureIgnoreCase))
 			{
 				bool isInputTrue = false;
+				bool rightMoneyValue = false;
 				string choosen = string.Empty;
 				int choosenInt = 0;
 				// Show Housings out of AssetManager
@@ -123,9 +124,15 @@ public class Cli
 				}
 				
 				// Check if there are at least the amount of Money that the house costs
+				(Money valueFull, Money valueNow) = assetManager.getAsset(choosenInt).getValue();
+				
+				if()
+				{
+
+				}
 
 				// Load Assets in List
-				List<(string,string)> assetListHome = assetManager.getAssetList(AssetType.Home);
+				
 
 				// Remove Amount of Money 
 
