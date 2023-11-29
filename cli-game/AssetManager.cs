@@ -33,6 +33,8 @@ public class AssetManager:IFinance
         assetList.Add(asset);
     }
 
+    public Asset getAsset(int pointer) => assetList[pointer];
+
     public Asset moveAsset(int pointer)
     {
         Asset returnAsset = assetList[pointer];

@@ -111,7 +111,7 @@ public class Cli
 					try
 					{
 						choosenInt = Int32.Parse(choosen);
-						if(choosenInt >= 0)
+						if(choosenInt >= 0 && choosenInt < assetManager.getAssetListCount())
 						{
 							isInputTrue = true;
 						}
@@ -124,6 +124,8 @@ public class Cli
 				
 				// Check if there are at least the amount of Money that the house costs
 
+				// Load Assets in List
+				List<(string,string)> assetListHome = assetManager.getAssetList(AssetType.Home);
 
 				// Remove Amount of Money 
 
