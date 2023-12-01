@@ -126,7 +126,7 @@ public class Cli
 				// Check if there are at least the amount of Money that the house costs
 				(Money valueFull, Money valueNow) = assetManager.getAsset(choosenInt).getValue();
 				
-				if()
+				if(valueNow.getValueFloat() <= person.money.getValueFloat())
 				{
 
 				}
