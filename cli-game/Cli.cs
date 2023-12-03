@@ -98,7 +98,6 @@ public class Cli
 			else if(menuHousings.Equals("b", StringComparison.InvariantCultureIgnoreCase))
 			{
 				bool isInputTrue = false;
-				bool rightMoneyValue = false;
 				string choosen = string.Empty;
 				int choosenInt = 0;
 				// Show Housings out of AssetManager
