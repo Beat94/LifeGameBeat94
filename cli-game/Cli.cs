@@ -142,10 +142,6 @@ public class Cli
 				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
 		}
-
-		
-
-
 	}
 
 	public void menuAssets()
