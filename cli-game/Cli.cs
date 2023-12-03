@@ -130,7 +130,7 @@ public class Cli
 					// Load Assets in List
 					person.personalAssetManager.addAsset(assetManager.getAsset(choosenInt));
 					// Remove Amount of Money 
-					person.money.giveMoney(valueNow.getValueDecimal())
+					person.money.giveMoney(valueNow.getValueDecimal());
 				}
 			}
 			else if(menuHousings.Equals("r", StringComparison.InvariantCultureIgnoreCase))
