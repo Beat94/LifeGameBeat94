@@ -128,16 +128,11 @@ public class Cli
 				
 				if(valueNow.getValueFloat() <= person.money.getValueFloat())
 				{
-
+					// Load Assets in List
+					person.personalAssetManager.addAsset(assetManager.getAsset(choosenInt));
+					// Remove Amount of Money 
+					person.money.giveMoney(valueNow.getValueDecimal())
 				}
-
-				// Load Assets in List
-				
-
-				// Remove Amount of Money 
-
-				// check house into personal asset and delete it in AssetList
-
 
 				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
