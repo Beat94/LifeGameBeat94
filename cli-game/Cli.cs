@@ -132,8 +132,6 @@ public class Cli
 					// Remove Amount of Money 
 					person.money.giveMoney(valueNow.getValueDecimal())
 				}
-
-				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
 			else if(menuHousings.Equals("r", StringComparison.InvariantCultureIgnoreCase))
 			{
