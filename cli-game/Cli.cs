@@ -135,6 +135,16 @@ public class Cli
 			}
 			else if(menuHousings.Equals("r", StringComparison.InvariantCultureIgnoreCase))
 			{
+				// show Houselist
+
+				// choose House
+
+				// show price
+
+				// check if price matches with money on person
+				// if yes - repair house
+				// if no do nothing - show 
+
 				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
 			else if(menuHousings.Equals("s", StringComparison.InvariantCultureIgnoreCase))
