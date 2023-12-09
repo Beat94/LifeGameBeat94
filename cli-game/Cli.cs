@@ -139,7 +139,7 @@ public class Cli
 
 				// choose House
 
-				// show price
+				// show repair price
 
 				// check if price matches with money on person
 				// if yes - repair house
