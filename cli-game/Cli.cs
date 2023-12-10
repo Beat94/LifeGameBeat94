@@ -135,9 +135,12 @@ public class Cli
 			}
 			else if(menuHousings.Equals("r", StringComparison.InvariantCultureIgnoreCase))
 			{
+				string choosen = string.Empty;
 				// show Houselist
+				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Home);
 
 				// choose House
+				choosen = tb.menuMulti(houseList, "Repair house", "to repair");
 
 				// show repair price
 
