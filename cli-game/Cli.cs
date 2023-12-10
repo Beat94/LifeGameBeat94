@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 public class Cli
 {
@@ -136,15 +137,41 @@ public class Cli
 			else if(menuHousings.Equals("r", StringComparison.InvariantCultureIgnoreCase))
 			{
 				string choosen = string.Empty;
+				int choosenInt = 0;
+				bool isValueTrue = false;
 				// show Houselist
 				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Home);
 
-				// choose House
-				choosen = tb.menuMulti(houseList, "Repair house", "to repair");
+
+				while(isValueTrue == false)
+				{
+					// choose House
+					choosen = tb.menuMulti(houseList, "Repair house", "to repair");
+
+					// change string to int - with try catch
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+						if(choosenInt > 0 && choosenInt <= assetManager.getAssetListCount())
+						{
+							isValueTrue = true;
+						}
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception);
+					}
+				}
 
 				// show repair price
+				Console.WriteLine($"Repair price of housing {choosen} is {assetManager.getAsset(choosenInt).repairPrice().getValueFloat()}.-");
 
-				// check if price matches with money on person
+				// check if price is lower than money on person
+				if()
+				{
+
+				}
+
 				// if yes - repair house
 				// if no do nothing - show 
 
