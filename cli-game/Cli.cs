@@ -139,6 +139,8 @@ public class Cli
 				string choosen = string.Empty;
 				int choosenInt = 0;
 				bool isValueTrue = false;
+				float renovationCostsFloat = 0;
+				decimal renovationCostsDecimal = 0;
 				// show Houselist
 				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Home);
 
@@ -163,19 +165,23 @@ public class Cli
 					}
 				}
 
+				renovationCostsFloat = assetManager.getAsset(choosenInt).repairPrice().getValueFloat();
+				renovationCostsDecimal = assetManager.getAsset(choosenInt).repairPrice().getValueDecimal();
 				// show repair price
-				Console.WriteLine($"Repair price of housing {choosen} is {assetManager.getAsset(choosenInt).repairPrice().getValueFloat()}.-");
+				Console.WriteLine($"Repair price of housing {choosen} is {renovationCostsFloat}.-");
 
 				// check if price is lower than money on person
-				if()
-				{
-
-				}
-
 				// if yes - repair house
 				// if no do nothing - show 
-
-				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
+				if(renovationCostsFloat >= person.money.getValueFloat())
+				{
+					assetManager.getAsset(choosenInt).repair(person.money.giveMoney(renovationCostsDecimal));
+					
+				}
+				else
+				{
+					Console.WriteLine("Zu wenig Geld im Geldbeutel");
+				}
 			}
 			else if(menuHousings.Equals("s", StringComparison.InvariantCultureIgnoreCase))
 			{

@@ -63,6 +63,7 @@ public class AssetManager:IFinance
         return AssetListOut;
     }
 
+
     private void cleanArray()
     {
         int assetCount = getAssetListCount();
