@@ -103,7 +103,9 @@ public class Cli
 				int choosenInt = 0;
 				// Show Housings out of AssetManager
 				List<(string, string)> assetList = assetManager.getAssetList(AssetType.Home);
-				tb.cliTable(assetList);
+				
+				// has this codesnappet to be used?
+				//tb.cliTable(assetList);
 
 				// choose Asset with number
 				while(isInputTrue == false)
@@ -185,6 +187,10 @@ public class Cli
 			}
 			else if(menuHousings.Equals("s", StringComparison.InvariantCultureIgnoreCase))
 			{
+				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Home);
+
+				while()
+
 				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
 		}
