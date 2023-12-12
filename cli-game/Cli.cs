@@ -182,14 +182,18 @@ public class Cli
 				}
 				else
 				{
-					Console.WriteLine("Zu wenig Geld im Geldbeutel");
+					Console.WriteLine("Too less money on person");
 				}
 			}
 			else if(menuHousings.Equals("s", StringComparison.InvariantCultureIgnoreCase))
 			{
+				bool isValueTrue = false;
 				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Home);
 
-				while()
+				while(isValueTrue == false)
+				{
+					choosen = tb.menuMulti(houseList, "Sell house", "to sell");
+				}
 
 				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
