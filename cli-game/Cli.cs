@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 public class Cli
 {
@@ -6,7 +7,7 @@ public class Cli
 	StandardJobsManager sjm = new StandardJobsManager();
 	Person person = new Person("");
 	Bank bank = new Bank("Public Bank", 105,102,116,110);
-
+	AssetManager assetManager = new AssetManager(true);
 
 	public string? menuMain()
 	{
@@ -22,6 +23,227 @@ public class Cli
 		string? menuSelect = tb.menuMulti(menuDict, "Main Menu", "Menu");
 
 		return menuSelect;
+	}
+
+	public void menuVehicles()
+	{
+		//Vehicle Class has to be implemented
+
+		string menuVehicles = string.Empty;
+
+		List<(string, string)> menuVehiclesDict = new List<(string, string)>
+		{
+			// implement menu
+			("View vehicles", "v"),
+			("Buy vehicles", "b"),
+			("Repair vehicles", "r"),
+			("Sell vehicles", "s"),
+			("Go to Main Menu", "q")
+		};
+
+		while(!menuVehicles.Equals("q",StringComparison.InvariantCultureIgnoreCase))
+		{
+			menuVehicles = tb.menuMulti(menuVehiclesDict, "Menu Vehicles", "Vehicles");
+
+			if(!menuVehicles.Equals("v",StringComparison.InvariantCultureIgnoreCase))
+			{
+				List<(string,string)> personalAssets = person.personalAssetManager.getAssetList(AssetType.Vehicle);
+				tb.cliTable(personalAssets);
+			}
+			else if(!menuVehicles.Equals("b",StringComparison.InvariantCultureIgnoreCase))
+			{
+				List<(string,string)> assetManagerListVehicle = assetManager.getAssetList(AssetType.Vehicle);
+				string chosenVehicle = tb.menuMulti(assetManagerListVehicle, "Buy Vehicle", "Buy");
+				
+				// Build logic to transver money - ex. bankaccount transaction
+
+				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+			}
+			else if(!menuVehicles.Equals("r",StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+			}
+			else if(!menuVehicles.Equals("s",StringComparison.InvariantCultureIgnoreCase))
+			{
+				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+			}	
+		}
+	}
+
+	public void menuHousings()
+	{
+		string menuHousings = string.Empty;
+
+		List<(string, string)> menuHousingsDict = new List<(string, string)>
+		{
+			// implement menu
+			("View housing", "v"),
+			("Buy housing", "b"),
+			("Repair housing", "r"),
+			("Sell housing", "s"),
+			("Go to Main Menu", "q")
+		};
+
+		while(!menuHousings.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		{
+			menuHousings = tb.menuMulti(menuHousingsDict, "Menu Housings", "Housings");
+
+			if(menuHousings.Equals("v", StringComparison.InvariantCultureIgnoreCase))
+			{
+				List<(string, string)> assetList = person.personalAssetManager.getAssetList(AssetType.Home);
+				if(assetList.Count > 0)
+				{
+					tb.cliTable(assetList);
+				}
+			}
+			else if(menuHousings.Equals("b", StringComparison.InvariantCultureIgnoreCase))
+			{
+				bool isInputTrue = false;
+				string choosen = string.Empty;
+				int choosenInt = 0;
+				// Show Housings out of AssetManager
+				List<(string, string)> assetList = assetManager.getAssetList(AssetType.Home);
+				
+				// has this codesnappet to be used?
+				//tb.cliTable(assetList);
+
+				// choose Asset with number
+				while(isInputTrue == false)
+				{
+					choosen = tb.menuMulti(assetList, "Buy Housing", "to buy");
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+						if(choosenInt >= 0 && choosenInt < assetManager.getAssetListCount())
+						{
+							isInputTrue = true;
+						}
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception);
+					}
+				}
+				
+				// Check if there are at least the amount of Money that the house costs
+				(Money valueFull, Money valueNow) = assetManager.getAsset(choosenInt).getValue();
+				
+				if(valueNow.getValueFloat() <= person.money.getValueFloat())
+				{
+					// Load Assets in List
+					person.personalAssetManager.addAsset(assetManager.getAsset(choosenInt));
+					// Remove Amount of Money 
+					person.money.giveMoney(valueNow.getValueDecimal());
+				}
+			}
+			else if(menuHousings.Equals("r", StringComparison.InvariantCultureIgnoreCase))
+			{
+				string choosen = string.Empty;
+				int choosenInt = 0;
+				bool isValueTrue = false;
+				float renovationCostsFloat = 0;
+				decimal renovationCostsDecimal = 0;
+				// show Houselist
+				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Home);
+
+
+				while(isValueTrue == false)
+				{
+					// choose House
+					choosen = tb.menuMulti(houseList, "Repair house", "to repair");
+
+					// change string to int - with try catch
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+						if(choosenInt > 0 && choosenInt <= assetManager.getAssetListCount())
+						{
+							isValueTrue = true;
+						}
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception.Message);
+					}
+				}
+
+				renovationCostsFloat = assetManager.getAsset(choosenInt).repairPrice().getValueFloat();
+				renovationCostsDecimal = assetManager.getAsset(choosenInt).repairPrice().getValueDecimal();
+				// show repair price
+				Console.WriteLine($"Repair price of housing {choosen} is {renovationCostsFloat}.-");
+
+				// check if price is lower than money on person
+				// if yes - repair house
+				// if no do nothing - show 
+				if(renovationCostsFloat >= person.money.getValueFloat())
+				{
+					assetManager.getAsset(choosenInt).repair(person.money.giveMoney(renovationCostsDecimal));
+					
+				}
+				else
+				{
+					Console.WriteLine("Too less money on person");
+				}
+			}
+			else if(menuHousings.Equals("s", StringComparison.InvariantCultureIgnoreCase))
+			{
+				bool isValueTrue = false;
+				string choosen = String.Empty;
+				int choosenInt = 0;
+				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Home);
+
+				while(isValueTrue == false)
+				{
+					choosen = tb.menuMulti(houseList, "Sell house", "to sell");
+
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+
+						if(choosenInt > 0 && choosenInt <= assetManager.getAssetListCount())
+						{
+							isValueTrue = true;
+						}
+
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception.Message);
+					}
+				}
+
+				// sell Home
+				// add money to personal money
+				person.addMoney(person.personalAssetManager.sellAsset(choosenInt));
+			}
+		}
+	}
+
+	public void menuAssets()
+	{
+		string menuAssets = string.Empty;
+
+		List<(string, string)> menuAssetsDict = new List<(string, string)>
+		{
+			// implement menu
+			("Manage vehicles", "v"),
+			("Manage housings", "h"),
+			("Go to Main Menu", "q")
+		};
+
+		while(!menuAssets.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+		{
+			menuAssets = tb.menuMulti(menuAssetsDict, "Menu Asset", "Asset");
+
+			if(menuAssets.Equals("v", StringComparison.InvariantCultureIgnoreCase))
+			{
+				menuVehicles();
+			}
+			else if(menuAssets.Equals("h", StringComparison.InvariantCultureIgnoreCase))
+			{
+				menuHousings();
+			}
+		}
 	}
 
 	public void menuBank()
@@ -488,6 +710,7 @@ public class Cli
 		{
 			// implement menu
 			("Next Day", "n"),
+			("Go to Assets", "a"),
 			("Go to Bank", "b"),
 			("Go to Standard Jobs", "j"),
 			("Go to Main Menu", "q")
@@ -500,10 +723,15 @@ public class Cli
 			Console.WriteLine($"Day Menu Day {person.DayCount}");
 			menuSelect2 = tb.menuMulti(menuDayDict, "Day menu", "Day");
 
-			if(menuSelect2.Equals("n", StringComparison.CurrentCultureIgnoreCase))
+			if(menuSelect2.Equals("a", StringComparison.CurrentCultureIgnoreCase))
+			{
+				menuAssets();
+			}
+			else if(menuSelect2.Equals("n", StringComparison.CurrentCultureIgnoreCase))
 			{
 				Console.WriteLine("Next Day");
 				person.newDay();
+				assetManager.newDay();
 			}
 			else if(menuSelect2.Equals("b", StringComparison.CurrentCultureIgnoreCase))
 			{

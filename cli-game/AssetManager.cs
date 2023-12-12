@@ -33,6 +33,29 @@ public class AssetManager:IFinance
         assetList.Add(asset);
     }
 
+    public Asset getAsset(int pointer) => assetList[pointer];
+
+    public Asset moveAsset(int pointer)
+    {
+        Asset returnAsset = assetList[pointer];
+        assetList.RemoveAt(pointer);
+        return returnAsset;
+    }
+
+    public Money sellAsset(int pointer)
+    {
+        Money output = new Money(0);
+
+        if(isManaged == false)
+        {
+            (Money valueFull, Money valuePart) = assetList[pointer].getValue();
+            output = valuePart;
+            assetList.RemoveAt(pointer);
+        }
+
+        return output;
+    }
+
     public List<(string, string)> getAssetList(AssetType? assetType)
     {
         List<(string,string)> AssetListOut = new();
@@ -41,7 +64,8 @@ public class AssetManager:IFinance
         {
             if(assetList[i].GetType().ToString().Equals(assetType.ToString()) && !assetType.Equals(null))
             {
-                AssetListOut.Add((assetList[i].GetType().ToString(), i.ToString()));
+                (Money valueFull, Money valueNow) = assetList[i].getValue();
+                AssetListOut.Add((assetList[i].GetType().ToString() + "  " + valueNow.getValueDecimal(), i.ToString()));
             }
             else
             {
