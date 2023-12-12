@@ -42,6 +42,20 @@ public class AssetManager:IFinance
         return returnAsset;
     }
 
+    public Money sellAsset(int pointer)
+    {
+        Money output = new Money(0);
+
+        if(isManaged == false)
+        {
+            (Money valueFull, Money valuePart) = assetList[pointer].getValue();
+            output = valuePart;
+            assetList.RemoveAt(pointer);
+        }
+
+        return output;
+    }
+
     public List<(string, string)> getAssetList(AssetType? assetType)
     {
         List<(string,string)> AssetListOut = new();
@@ -62,7 +76,6 @@ public class AssetManager:IFinance
 
         return AssetListOut;
     }
-
 
     private void cleanArray()
     {

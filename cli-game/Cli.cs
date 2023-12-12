@@ -214,8 +214,7 @@ public class Cli
 
 				// sell Home
 				// add money to personal money
-				
-				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
+				person.addMoney(person.personalAssetManager.sellAsset(choosenInt));
 			}
 		}
 	}
