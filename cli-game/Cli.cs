@@ -163,7 +163,7 @@ public class Cli
 					}
 					catch(Exception exception)
 					{
-						Console.WriteLine(exception);
+						Console.WriteLine(exception.Message);
 					}
 				}
 
@@ -188,13 +188,33 @@ public class Cli
 			else if(menuHousings.Equals("s", StringComparison.InvariantCultureIgnoreCase))
 			{
 				bool isValueTrue = false;
+				string choosen = String.Empty;
+				int choosenInt = 0;
 				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Home);
 
 				while(isValueTrue == false)
 				{
 					choosen = tb.menuMulti(houseList, "Sell house", "to sell");
+
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+
+						if(choosenInt > 0 && choosenInt <= assetManager.getAssetListCount())
+						{
+							isValueTrue = true;
+						}
+
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception.Message);
+					}
 				}
 
+				// sell Home
+				// add money to personal money
+				
 				Console.WriteLine("!! Has to be implementated - Function menuHousings !!");
 			}
 		}
