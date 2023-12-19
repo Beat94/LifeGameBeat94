@@ -19,7 +19,7 @@ public class Asset : IFinance
 
     public void newDay()
     {
-        status = status * 0.99f;
+        status *= 0.99f;
     }
 
     public Money repairPrice()
