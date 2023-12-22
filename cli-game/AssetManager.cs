@@ -96,7 +96,10 @@ public class AssetManager:IFinance
         for(int i = 0; i < 10; i++)
         {
             int decision = random.Next(0,1);
+            int wheelCount = 2;
             bool isHouse = false;
+            bool isCar = false;
+
             if(decision >= 1)
             {
                 isHouse = true;
@@ -110,6 +113,24 @@ public class AssetManager:IFinance
             );
 
             assetList.Add(house);
+            decision = random.Next(0,1);
+
+            if(decision >= 1)
+            {
+                isCar = true;
+                wheelCount = 4;
+            }
+
+            Vehicle vehicle = new Vehicle
+            (
+                new Money(random.Next(20000000, 70000000)),
+                random.Next(50,100),
+                isCar,
+                wheelCount,
+                random.Next(2,5)
+            );
+
+            assetList.Add(vehicle);
         }
     }
 
