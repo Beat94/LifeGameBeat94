@@ -112,5 +112,4 @@ public class AssetManager:IFinance
             assetList.Add(house);
         }
     }
-
 }
