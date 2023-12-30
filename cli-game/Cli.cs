@@ -48,7 +48,10 @@ public class Cli
 			if(!menuVehicles.Equals("v",StringComparison.InvariantCultureIgnoreCase))
 			{
 				List<(string,string)> personalAssets = person.personalAssetManager.getAssetList(AssetType.Vehicle);
-				tb.cliTable(personalAssets);
+				if(personalAssets.Count > 0)
+				{
+					tb.cliTable(personalAssets);
+				}
 			}
 			else if(!menuVehicles.Equals("b",StringComparison.InvariantCultureIgnoreCase))
 			{
