@@ -146,9 +146,34 @@ public class Cli
 			}
 			else if(!menuVehicles.Equals("s",StringComparison.InvariantCultureIgnoreCase))
 			{
+				bool isValueTrue = false;
+				string choosen = String.Empty;
+				int choosenInt = 0;
+				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Vehicle);
 
+				while(isValueTrue == false)
+				{
+					choosen = tb.menuMulti(houseList, "Sell vehicle", "to sell");
 
-				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+
+						if(choosenInt > 0 && choosenInt <= assetManager.getAssetListCount())
+						{
+							isValueTrue = true;
+						}
+
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception.Message);
+					}
+				}
+
+				// sell vehicle
+				// add money to personal money
+				person.addMoney(person.personalAssetManager.sellAsset(choosenInt));
 			}	
 		}
 	}
