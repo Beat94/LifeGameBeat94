@@ -97,10 +97,57 @@ public class Cli
 			}
 			else if(!menuVehicles.Equals("r",StringComparison.InvariantCultureIgnoreCase))
 			{
-				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+				string choosen = string.Empty;
+				int choosenInt = 0;
+				bool isValueTrue = false;
+				float renovationCostsFloat = 0;
+				decimal renovationCostsDecimal = 0;
+				// show Houselist
+				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Vehicle);
+
+
+				while(isValueTrue == false)
+				{
+					// choose House
+					choosen = tb.menuMulti(houseList, "Repair vehicle", "to repair");
+
+					// change string to int - with try catch
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+						if(choosenInt > 0 && choosenInt <= assetManager.getAssetListCount())
+						{
+							isValueTrue = true;
+						}
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception.Message);
+					}
+				}
+
+				renovationCostsFloat = assetManager.getAsset(choosenInt).repairPrice().getValueFloat();
+				renovationCostsDecimal = assetManager.getAsset(choosenInt).repairPrice().getValueDecimal();
+				// show repair price
+				Console.WriteLine($"Repair price of vehicle {choosen} is {renovationCostsFloat}.-");
+
+				// check if price is lower than money on person
+				// if yes - repair house
+				// if no do nothing - show 
+				if(renovationCostsFloat >= person.money.getValueFloat())
+				{
+					assetManager.getAsset(choosenInt).repair(person.money.giveMoney(renovationCostsDecimal));
+					
+				}
+				else
+				{
+					Console.WriteLine("Too less money on person");
+				}
 			}
 			else if(!menuVehicles.Equals("s",StringComparison.InvariantCultureIgnoreCase))
 			{
+
+
 				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
 			}	
 		}
