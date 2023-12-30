@@ -54,13 +54,46 @@ public class Cli
 				}
 			}
 			else if(!menuVehicles.Equals("b",StringComparison.InvariantCultureIgnoreCase))
-			{
-				List<(string,string)> assetManagerListVehicle = assetManager.getAssetList(AssetType.Vehicle);
-				string chosenVehicle = tb.menuMulti(assetManagerListVehicle, "Buy Vehicle", "Buy");
-				
+			{	
 				// Build logic to transver money - ex. bankaccount transaction
 
-				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+				bool isInputTrue = false;
+				string chosenVehicle = string.Empty;
+				int choosenInt = 0;
+				// Show Housings out of AssetManager
+				List<(string,string)> assetManagerListVehicle = assetManager.getAssetList(AssetType.Vehicle);
+				
+				// has this codesnappet to be used?
+				//tb.cliTable(assetList);
+
+				// choose Asset with number
+				while(isInputTrue == false)
+				{
+					chosenVehicle = tb.menuMulti(assetManagerListVehicle, "Buy Vehicle", "Buy");
+					try
+					{
+						choosenInt = Int32.Parse(chosenVehicle);
+						if(choosenInt >= 0 && choosenInt < assetManager.getAssetListCount())
+						{
+							isInputTrue = true;
+						}
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception);
+					}
+				}
+				
+				// Check if there are at least the amount of Money that the house costs
+				(Money valueFull, Money valueNow) = assetManager.getAsset(choosenInt).getValue();
+				
+				if(valueNow.getValueFloat() <= person.money.getValueFloat())
+				{
+					// Load Assets in List
+					person.personalAssetManager.addAsset(assetManager.getAsset(choosenInt));
+					// Remove Amount of Money 
+					person.money.giveMoney(valueNow.getValueDecimal());
+				}
 			}
 			else if(!menuVehicles.Equals("r",StringComparison.InvariantCultureIgnoreCase))
 			{
