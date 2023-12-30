@@ -48,24 +48,132 @@ public class Cli
 			if(!menuVehicles.Equals("v",StringComparison.InvariantCultureIgnoreCase))
 			{
 				List<(string,string)> personalAssets = person.personalAssetManager.getAssetList(AssetType.Vehicle);
-				tb.cliTable(personalAssets);
+				if(personalAssets.Count > 0)
+				{
+					tb.cliTable(personalAssets);
+				}
 			}
 			else if(!menuVehicles.Equals("b",StringComparison.InvariantCultureIgnoreCase))
-			{
-				List<(string,string)> assetManagerListVehicle = assetManager.getAssetList(AssetType.Vehicle);
-				string chosenVehicle = tb.menuMulti(assetManagerListVehicle, "Buy Vehicle", "Buy");
-				
+			{	
 				// Build logic to transver money - ex. bankaccount transaction
 
-				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+				bool isInputTrue = false;
+				string chosenVehicle = string.Empty;
+				int choosenInt = 0;
+				// Show Housings out of AssetManager
+				List<(string,string)> assetManagerListVehicle = assetManager.getAssetList(AssetType.Vehicle);
+				
+				// has this codesnappet to be used?
+				//tb.cliTable(assetList);
+
+				// choose Asset with number
+				while(isInputTrue == false)
+				{
+					chosenVehicle = tb.menuMulti(assetManagerListVehicle, "Buy Vehicle", "Buy");
+					try
+					{
+						choosenInt = Int32.Parse(chosenVehicle);
+						if(choosenInt >= 0 && choosenInt < assetManager.getAssetListCount())
+						{
+							isInputTrue = true;
+						}
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception);
+					}
+				}
+				
+				// Check if there are at least the amount of Money that the house costs
+				(Money valueFull, Money valueNow) = assetManager.getAsset(choosenInt).getValue();
+				
+				if(valueNow.getValueFloat() <= person.money.getValueFloat())
+				{
+					// Load Assets in List
+					person.personalAssetManager.addAsset(assetManager.getAsset(choosenInt));
+					// Remove Amount of Money 
+					person.money.giveMoney(valueNow.getValueDecimal());
+				}
 			}
 			else if(!menuVehicles.Equals("r",StringComparison.InvariantCultureIgnoreCase))
 			{
-				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+				string choosen = string.Empty;
+				int choosenInt = 0;
+				bool isValueTrue = false;
+				float renovationCostsFloat = 0;
+				decimal renovationCostsDecimal = 0;
+				// show Houselist
+				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Vehicle);
+
+
+				while(isValueTrue == false)
+				{
+					// choose House
+					choosen = tb.menuMulti(houseList, "Repair vehicle", "to repair");
+
+					// change string to int - with try catch
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+						if(choosenInt > 0 && choosenInt <= assetManager.getAssetListCount())
+						{
+							isValueTrue = true;
+						}
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception.Message);
+					}
+				}
+
+				renovationCostsFloat = assetManager.getAsset(choosenInt).repairPrice().getValueFloat();
+				renovationCostsDecimal = assetManager.getAsset(choosenInt).repairPrice().getValueDecimal();
+				// show repair price
+				Console.WriteLine($"Repair price of vehicle {choosen} is {renovationCostsFloat}.-");
+
+				// check if price is lower than money on person
+				// if yes - repair house
+				// if no do nothing - show 
+				if(renovationCostsFloat >= person.money.getValueFloat())
+				{
+					assetManager.getAsset(choosenInt).repair(person.money.giveMoney(renovationCostsDecimal));
+					
+				}
+				else
+				{
+					Console.WriteLine("Too less money on person");
+				}
 			}
 			else if(!menuVehicles.Equals("s",StringComparison.InvariantCultureIgnoreCase))
 			{
-				Console.WriteLine("!! Has to be implementated - Function menuVehicles !!");
+				bool isValueTrue = false;
+				string choosen = String.Empty;
+				int choosenInt = 0;
+				List<(string, string)> houseList = assetManager.getAssetList(AssetType.Vehicle);
+
+				while(isValueTrue == false)
+				{
+					choosen = tb.menuMulti(houseList, "Sell vehicle", "to sell");
+
+					try
+					{
+						choosenInt = Int32.Parse(choosen);
+
+						if(choosenInt > 0 && choosenInt <= assetManager.getAssetListCount())
+						{
+							isValueTrue = true;
+						}
+
+					}
+					catch(Exception exception)
+					{
+						Console.WriteLine(exception.Message);
+					}
+				}
+
+				// sell vehicle
+				// add money to personal money
+				person.addMoney(person.personalAssetManager.sellAsset(choosenInt));
 			}	
 		}
 	}
