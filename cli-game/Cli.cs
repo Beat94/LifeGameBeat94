@@ -9,6 +9,16 @@ public class Cli
 	Bank bank = new Bank("Public Bank", 105,102,116,110);
 	AssetManager assetManager = new AssetManager(true);
 
+	public void saveFunction()
+	{
+
+	}
+
+	public void loadFunction()
+	{
+
+	}
+
 	public string? menuMain()
 	{
 		List<(string, string)> menuDict = new List<(string,string)>
@@ -915,11 +925,13 @@ public class Cli
 			{
 				// implement save-workflow todo
 				Console.WriteLine("Save Game");
+				saveFunction();
 			}
 			else if(menuSelect.Equals("l"))
 			{
 				// implement load-workflow todo
 				Console.WriteLine("Load Game");
+				loadFunction();
 			}
 		}
 	}
